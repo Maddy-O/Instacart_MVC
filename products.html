@@ -18,16 +18,7 @@
             <span id="cat_span"></span>
         </div>
         <div class="product_categories">
-            <span>Popular</span>
-            <span>Produce</span>
-            <span>Deli & Prepared Foods</span>
-            <span>Snacks and Candy</span>
-            <span>Frozen</span>
-            <span>Bakery</span>
-            <span>Alcohol</span>
-            <span>Personal Care</span>
-            <span>Beauty</span>
-            <span>Hosehold</span>
+
         </div>
         <div class="product_lists">
 
@@ -58,6 +49,44 @@
         <option value="9">9</option>
         <option value="10">10</option>
     </select>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <div>
+            <span id="username">Username</span>
+            <p>Instacart customer since January 2022</p>
+        </div>
+        <hr>
+        <div class="menu">
+            <div>
+                <i class="fa fa-home" style="font-size:25px"></i>
+                <span>Stores</span>
+            </div>
+            <div>
+                <i class="fa fa-address-card" style="font-size:25px"></i>
+                <span>Your Orders</span>
+            </div>
+            <div>
+                <i class="fa fa-address-book" style="font-size:25px"></i>
+                <span>Your Recipes</span>
+            </div>
+            <div>
+                <i class="fa fa-gear" style="font-size:25px"></i>
+                <span>Your Account Settings</span>
+            </div>
+            <div>
+                <i class="fa fa-bolt" style="font-size:25px;color: yellow;"></i>
+                <span>Try Instacart Express</span>
+            </div>
+            
+        </div>
+
+      </div>
+      
+      <!-- <h2>Animated Sidenav Example</h2>
+      <p>Click on the element below to open the side navigation menu.</p>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
+
 </body>
 </html>
 
@@ -75,8 +104,29 @@
     // Changing the title and the bg according to selected category.
     let display_obj = JSON.parse(localStorage.getItem("cat_obj"))||{};
     document.querySelector("#cat_span").textContent = display_obj['name'];
-    document.querySelector(".heading").style.backgroundImage = `url(${display_obj['bg_img']})`;
+    document.querySelector(".heading").style.backgroundImage = `url(${display_obj['poster']})`;
 
+    // Working and displaying subcategories.
+    let subCategory_url = `http://localhost:5000/subCategory/${display_obj['id']}`
+    let subcategories;
+
+    getData(subCategory_url).then((res)=>{
+        subcategories = res;
+    })
+
+    setTimeout(() => {
+        console.log("subs",subcategories)
+        displaySubs(subcategories)
+    }, 500);
+
+    function displaySubs(subcategories){
+        let main_div = document.querySelector(".product_categories");
+        subcategories.forEach(element => {
+            let span = document.createElement("span");
+            span.textContent = element['name'];
+            main_div.append(span)
+        });
+    }
     // Appending the navbar into html.
     let container = document.querySelector(".header_container");
     container.innerHTML = navBar()
@@ -95,7 +145,7 @@
         let search_term = document.querySelector("#searchBar").value;
         let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search_term}`
         getData(url).then((res)=>{
-            if(res.meals == null)
+            if(res.meals == null || search_term == null)
             {
                 debounce.style.display = "none"
                 return
@@ -105,19 +155,19 @@
     });
     
     // Making the api call.
-    let cat_name = display_obj['name'];
-    let api_url = `http://127.0.0.1:5000/api/products`;
+    // let cat_name = display_obj['name'];
+    // let api_url = `http://127.0.0.1:5000/api/products`;
 
-    if(cat_name == "Grocery" || cat_name == "Alcohol" || cat_name == "Pets"){
-        api_url = `http://127.0.0.1:5000/api/${display_obj['name']}`;
-    }
+    // if(cat_name == "Grocery" || cat_name == "Alcohol" || cat_name == "Pets"){
+    //     api_url = `http://127.0.0.1:5000/api/${display_obj['name']}`;
+    // }
     
-    let shops_url = "http://127.0.0.1:5000/api/shops";
+    // let shops_url = "http://127.0.0.1:5000/api/shops";
 
-    let products_div = document.querySelector(".product_lists")
-    getData(api_url).then((res)=>{
-        appendProducts(res,products_div,dropdown)
-    })
+    // let products_div = document.querySelector(".product_lists")
+    // getData(api_url).then((res)=>{
+    //     appendProducts(res,products_div,dropdown)
+    // })
 
     // Drodown functionality.
     dropdown.addEventListener("change",()=>{
@@ -153,4 +203,14 @@ document.querySelector("#cart").addEventListener("click",()=>{
     }
     window.location.href = "./checkout/checkout.html"
 })
+
+
+document.querySelector("#menu").addEventListener("click",()=>{
+    document.getElementById("mySidenav").style.width = "300px";
+})
+
+document.querySelector(".closebtn").addEventListener("click",()=>{
+    document.getElementById("mySidenav").style.width = "0px";
+})
+
 </script>

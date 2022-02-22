@@ -1,4 +1,5 @@
 const express = require("express");
+const cors =  require('cors');
 const app = express();
 const port = 5000;
 const connect = require("./config/db");
@@ -8,6 +9,8 @@ const categoryController = require("./controllers/category.controller");
 const subcategoryController = require("./controllers/subCategory.controller");
 
 app.use(express.json());
+app.use(cors());
+
 app.use("/category",categoryController);
 app.use("/subCategory",subcategoryController);
 

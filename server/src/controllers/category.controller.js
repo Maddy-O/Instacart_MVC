@@ -23,4 +23,17 @@ router.get("",async (req,res)=>{
     }
 })
 
+
+
+router.patch("/:id", async (req,res)=>{
+    try{
+        const category = await Category.findByIdAndUpdate(req.params.id,req.body,{
+            new:true
+        }).lean().exec();
+        return res.status(200).send(category);
+    }   
+    catch(err){
+        return res.status(500).send(err.message);
+    }
+})
 module.exports = router;
