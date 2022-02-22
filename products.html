@@ -51,7 +51,6 @@
     </select>
 
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn">&times;</a>
         <div>
             <span id="username">Username</span>
             <p>Instacart customer since January 2022</p>
@@ -209,8 +208,11 @@ document.querySelector("#menu").addEventListener("click",()=>{
     document.getElementById("mySidenav").style.width = "300px";
 })
 
-document.querySelector(".closebtn").addEventListener("click",()=>{
-    document.getElementById("mySidenav").style.width = "0px";
-})
+// When the user clicks anywhere outside of the navbar, close it
+window.onclick = function(event) {
+  if (event.target == document.getElementById("mySidenav")) {
+    document.getElementById("mySidenav").style.width = "0px"
+  }
+}
 
 </script>
