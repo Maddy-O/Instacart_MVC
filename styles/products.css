@@ -69,6 +69,7 @@ body{
 }
 
 
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -169,51 +170,163 @@ body{
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    left: 0; 
     top: 0;
-    left: 0;
     background-color: white;
     overflow-x: hidden;
     transition: 0.1s;
-    padding-top: 60px;
+    padding-top: 30px;
+    overflow: scroll;
   }
   
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    font-size: 25px;
-    color: black;
-    display: block;
-    transition: 0.3s;
+
+  .sidenav>div:nth-child(1){
+    padding-left: 20px;
+    line-height: 10px;
   }
 
-  .sidenav>div{
-    padding: 8px 8px 8px 32px;
+  .sidenav>div:nth-child(1) p{
+      font-size: 15px;
   }
 
+  .rightnav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: #F6F7F8;
+    overflow-x: hidden;
+    transition: 0.1s;
+    overflow: scroll;
+  }
+
+  .rightnav_head
+  { 
+      display: flex;
+      justify-content: space-evenly;
+      background-color: white;
+  }
+
+  .rightnav_head button{
+      background: white;
+      font-size: 15px;
+      border: 0.5px solid #0C670C;
+      border-radius: 5px;
+      padding: 10px 20px;
+      color: green;
+  }
+  .rightnav_head>div:nth-child(1){
+    text-align: center;
+    line-height: 8px;
+  }
+
+  .rightnav_head>div p:nth-child(1){
+      font-weight: 500;
+      font-size: 20px;
+  }
+
+  .rightnav_head>div p:nth-child(2){
+    font-size: 15px;
+    }
+
+    .checkout_btn{
+        background-color: #43B02A;
+        color: white;
+        margin: auto;
+        width: 90%;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 20px;
+        text-align: center;
+        padding: 10px;
+        margin-top: 100%;
+    }
+
+    .checkout_btn>div{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 35%;
+    }
+    .checkout_btn>div>span:nth-child(2){
+        background-color: #399125;
+        padding: 2px;
+        border-radius: 5px;
+    }
   #username{
       font-size: 20px;
       font-weight: 500;
   }
-
+  .offer_div{
+      padding: 15px;
+      background-color: #FFF0BD;
+      margin-left: 5%;
+      border-radius: 10px;
+      width: 80%;
+      line-height: 15px;
+      margin-bottom: 20px;
+  }
+  .offer_div>p:nth-child(1){
+      font-size: 19px;
+      font-weight: 500;
+  }
+  .offer_div>p:nth-child(2){
+      font-size: 13px;
+      font-weight: 400;
+  }
+  
+  .offer_div>button{
+      border-radius: 10px;
+      background-color: #FFBE1D;
+      border: none;
+      padding: 5px;
+  }
   .menu div{
       padding: 15px;
       display: flex;
       justify-content: space-between;
+      margin-left: 5%;
+      width: 70%;
   }
-
+  
+  .menu div:hover{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    background-color: #343538;
+    color: white;
+    border-radius: 10px
+  }
   .menu span{
       font-weight: 500;
       font-size: 15px;
   }
-  
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+
+  .credits_div span{
+      font-weight: 500;
+      font-size: 15px;
   }
   
+  .credits_div div{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    width: 70%;
+  }
+  .credits_div>div:nth-child(1){
+      color: grey;
+      font-size: 15px;
+      font-weight: 500;
+  }
+  .credits_div>div:nth-child(2){
+      color: #D43684;
+  }
+  .credits_div div:hover{
+    background-color: #343538;
+    color: white;
+    border-radius: 10px;
+  }
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}

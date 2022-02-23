@@ -53,7 +53,13 @@
     <div id="mySidenav" class="sidenav">
         <div>
             <span id="username">Username</span>
-            <p>Instacart customer since January 2022</p>
+            <p>Instacart customer since</p>
+            <p>January 2022</p>
+        </div>
+        <div class="offer_div">
+            <p>Start your free trial today!</p>
+            <p>You can cancel any time.</p>
+            <button>Try express for free</button>
         </div>
         <hr>
         <div class="menu">
@@ -77,15 +83,64 @@
                 <i class="fa fa-bolt" style="font-size:25px;color: yellow;"></i>
                 <span>Try Instacart Express</span>
             </div>
-            
         </div>
-
+        <hr>
+        <div class="credits_div">
+            <div>
+                Credits and Promos
+            </div>
+            <div>
+                <i class="fa fa-dollar" style="font-size:25px"></i>
+                <span>Invite friends, get $1000</span>
+            </div>
+            <div>
+                <i class="fa fa-gift" style="font-size:25px"></i>
+                <span>Buy gift Cards</span>
+            </div>
+            <div>
+                <i class="fa fa-tag" style="font-size:25px"></i>
+                <span>Add promo or gift card</span>
+            </div>
+        </div>
+        <hr>
+        <div class="credits_div">
+            <div>
+                Support
+            </div>
+            <div style="color: black">
+                <i class="fa fa-headphones" style="font-size:25px"></i>
+                <span>Help Center</span>
+            </div>
+            <div>
+                <i class="fa fa-lightbulb-o" style="font-size:25px"></i>
+                <span>How Instacart Works</span>
+            </div>
+        </div>
+        <hr>
+        <div class="credits_div">
+            <div style="color: black;">
+                <i class="fa fa-sign-out" style="font-size:25px"></i>
+                <span>Log out</span>
+            </div>
+        </div>
       </div>
-      
-      <!-- <h2>Animated Sidenav Example</h2>
-      <p>Click on the element below to open the side navigation menu.</p>
-      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span> -->
-
+      <div class="rightnav">
+          <div class="rightnav_head">
+            <div>
+                <p>Items added into Cart</p>
+                <p>Shpping in 04038</p>
+            </div>
+            <p>
+                <button id="close_button">X Close</i></button>
+            </p>
+          </div>
+          <div class="checkout_btn">
+            <div>
+                <span>Go to checkout</span>
+                <span>$199</span>
+            </div>
+        </div>
+      </div>
 </body>
 </html>
 
@@ -210,9 +265,22 @@ document.querySelector("#menu").addEventListener("click",()=>{
 
 // When the user clicks anywhere outside of the navbar, close it
 window.onclick = function(event) {
-  if (event.target == document.getElementById("mySidenav")) {
+  if (event.target != document.getElementById("menu")) {
     document.getElementById("mySidenav").style.width = "0px"
   }
 }
 
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+// opening the right nav menu.
+document.querySelector("#cart").addEventListener("click",()=>{
+    document.querySelector(".rightnav").style.width = "500px"
+})
+
+// closing the right nav menu.
+document.querySelector("#close_button").addEventListener("click",()=>{
+    document.querySelector(".rightnav").style.width="0px";
+})
 </script>
