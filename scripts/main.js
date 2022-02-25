@@ -1,5 +1,5 @@
-import {returnShops} from "./data.js";
-let shops = returnShops();
+// import {returnShops} from "./data.js";
+// let shops = returnShops();
 
 let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
 
@@ -30,28 +30,24 @@ function appendData(data,location){
 
 
 function appendProducts(data,location,dropdown){
-    let store_names = Object.keys(data);
-    for(let i = 0;i<store_names.length;i++){
-        // First Heading div.
+    let {shop_names,shops,final_data} = prepareData(data);
+    
+    for(let i = 0;i<shop_names.length;i++){
         let heading_div = document.createElement("div");
         let text_div = document.createElement("div");
-
         let img1 = document.createElement("img");
-        img1.src = shops[i]['img'];
+        img1.src = shops[shop_names[i]]
+        
         let p1 = document.createElement("p");
-        p1.textContent = store_names[i];
+        p1.textContent = shop_names[i];
         let p2 = document.createElement("p");
         p2.textContent = "Delivery avalaible"
-
-        text_div.append(p1,p2)
+        text_div.append(p1,p2);
         heading_div.append(img1,text_div)
-
-        heading_div.id = "heading_div"
-        let hr = document.createElement("hr");
-        // Products content div.
-
-        let div1 = document.createElement("div");
-        data[store_names[i]].map((elem)=>{
+        
+        let div1 = document.createElement("div")
+        div1.id = "grid_div"
+        final_data[shop_names[i]].forEach(elem => {
             let div2 = document.createElement("div");
             let img = document.createElement("img");
             img.src = elem['img'];
@@ -59,22 +55,75 @@ function appendProducts(data,location,dropdown){
             p2.textContent = elem['name'];
             div2.append(img,p2)
             div1.append(div2)
-            div2.addEventListener("click",()=>{
-                localStorage.setItem("display_obj",JSON.stringify(elem))
-                let modal = document.getElementById("myModal");
-                let modal_div = document.querySelector(".display_content");
-                appendModal(elem,modal_div,dropdown)
-                appendModalData(data[store_names[i]])
-                modal.style.display = "block";
-            })
-        })
-        location.append(heading_div,div1,hr)
+        });
+        location.append(heading_div,div1)
     }
+    // for(let i = 0;i<store_names.length;i++){
+    //     // First Heading div.
+    //     let heading_div = document.createElement("div");
+    //     let text_div = document.createElement("div");
+
+    //     let img1 = document.createElement("img");
+    //     img1.src = shops[i]['img'];
+    //     let p1 = document.createElement("p");
+    //     p1.textContent = store_names[i];
+    //     let p2 = document.createElement("p");
+    //     p2.textContent = "Delivery avalaible"
+
+    //     text_div.append(p1,p2)
+    //     heading_div.append(img1,text_div)
+
+    //     heading_div.id = "heading_div"
+    //     let hr = document.createElement("hr");
+    //     // Products content div.
+
+    //     let div1 = document.createElement("div");
+    //     // data[store_names[i]].map((elem)=>{
+    //     //     let div2 = document.createElement("div");
+    //     //     let img = document.createElement("img");
+    //     //     img.src = elem['img'];
+    //     //     let p2 = document.createElement("p");
+    //     //     p2.textContent = elem['name'];
+    //     //     div2.append(img,p2)
+    //     //     div1.append(div2)
+    //     //     div2.addEventListener("click",()=>{
+    //     //         localStorage.setItem("display_obj",JSON.stringify(elem))
+    //     //         let modal = document.getElementById("myModal");
+    //     //         let modal_div = document.querySelector(".display_content");
+    //     //         appendModal(elem,modal_div,dropdown)
+    //     //         appendModalData(data[store_names[i]])
+    //     //         modal.style.display = "block";
+    //     //     })
+    //     // })
+    //     location.append(heading_div,div1,hr)
+    // }
 }
 
+function prepareData(data){
+    let shops = {};
+    data.forEach(element => {
+        if(shops[element['store']['name']] == undefined){
+            shops[element['store']['name']] = element['store']['poster']
+        }
+    });
+    
+    let shop_names = Object.keys(shops);
+    let final_data = {};
+    for(let i = 0;i<shop_names.length;i++){
+        final_data[shop_names[i]] = []
+    }
+
+    for(let i = 0;i<shop_names.length;i++){
+        for(let j = 0;j<data.length;j++){
+            if(data[j]['store']['name'] == shop_names[i]){
+                final_data[shop_names[i]].push(data[j])
+            }
+        }
+    }
+    return {shops,shop_names,final_data}
+}
 
 function appendModal(data,location,dropdown){
-
     location.innerHTML = "";
     let div = document.createElement("div");
     let side_div = document.createElement("div");

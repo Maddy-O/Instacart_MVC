@@ -7,12 +7,15 @@ const connect = require("./config/db");
 // importing all controllers.
 const categoryController = require("./controllers/category.controller");
 const subcategoryController = require("./controllers/subCategory.controller");
+const productController = require("./controllers/product.controller");
+
 
 app.use(express.json());
 app.use(cors());
 
 app.use("/category",categoryController);
 app.use("/subCategory",subcategoryController);
+app.use("/product",productController);
 
 
 // Turning on the server and connection with db.

@@ -20,8 +20,13 @@
         <div class="product_categories">
 
         </div>
-        <div class="product_lists">
+        <div class="display_product">
+            <!-- <div class="store_heading">
 
+            </div>
+            <div class="products_lists">
+
+            </div> -->
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -169,18 +174,39 @@
     })
 
     setTimeout(() => {
-        console.log("subs",subcategories)
+        subcategories.unshift({name:"popular"})
         displaySubs(subcategories)
     }, 500);
 
+     // Making the api call.
+     let cat_id = display_obj['id'];
+     let products_div = document.querySelector(".display_product");
+     let api_url = `http://localhost:5000/product/${display_obj['id']}`;
+     getData(api_url).then((res)=>{
+         appendProducts(res,products_div,dropdown)
+     })
+     
     function displaySubs(subcategories){
         let main_div = document.querySelector(".product_categories");
         subcategories.forEach(element => {
             let span = document.createElement("span");
             span.textContent = element['name'];
+            span.addEventListener("click",()=>{
+                products_div.innerHTML = "";
+                if(element['name']!="popular"){
+                    api_url = `http://localhost:5000/product/${display_obj['id']}?sub_category=${element['_id']}`;
+                }
+                else{
+                    api_url = `http://localhost:5000/product/${display_obj['id']}`
+                }
+                getData(api_url).then((res)=>{
+                    appendProducts(res,products_div,dropdown)
+                })
+            })
             main_div.append(span)
         });
     }
+
     // Appending the navbar into html.
     let container = document.querySelector(".header_container");
     container.innerHTML = navBar()
@@ -208,7 +234,6 @@
         })
     });
     
-    // Making the api call.
     // let cat_name = display_obj['name'];
     // let api_url = `http://127.0.0.1:5000/api/products`;
 
@@ -218,9 +243,9 @@
     
     // let shops_url = "http://127.0.0.1:5000/api/shops";
 
-    // let products_div = document.querySelector(".product_lists")
     // getData(api_url).then((res)=>{
     //     appendProducts(res,products_div,dropdown)
+
     // })
 
     // Drodown functionality.

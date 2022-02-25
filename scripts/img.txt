@@ -1,0 +1,26 @@
+data.forEach(elem => {
+        // if(shops[elem['store']['name']] == undefined){
+        //     // shop_header.innerHTML = "";
+        //     shops[elem['store']['name']] = "present"
+        //     let img = document.createElement("img");
+        //     img.src = elem['store']['poster']
+        //     shop_header.append(img)
+        // }
+
+        let main_div = document.createElement("div");
+        let img = document.createElement("img");
+        img.src = elem['img'];
+        let name = document.createElement('p');
+        name.textContent = elem['name'];
+
+        let price = document.createElement('p');
+        price.textContent = "$"+elem['price']
+
+        let weight = document.createElement('p');
+        weight.textContent = elem['weight']
+
+        let text_div = document.createElement("div");
+        text_div.append(price,name,weight)
+        main_div.append(img,text_div)
+        location.append(shop_header,main_div)
+    });
