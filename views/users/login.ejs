@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/users/login_regis.css">
+</head>
+<body>
+    <div id="mainDiv">
+        <form id="firstDiv" action="/login" method="post" onsubmit="onSubmitHandler">
+            <p id="loginFont">Log in</p>
+            <input type="email" value="" placeholder="Email" class="input_Box" name="email"><br>
+            <input type="password" value="" placeholder="Password" class="input_Box" name="password"><br>
+            <input type="submit" value="Log in" id="button" class="input_Box" name="submit">  
+        </form>
+        <hr id="line">
+        <p class="last_line">Don't have an account?</p>
+        <a href="/users/regs" id="Link">Sign up</a>    
+    </hr>
+</body>
+</html>
+<script type="text/javascript">
+    alert("Thanks for signing up.");
+</script>

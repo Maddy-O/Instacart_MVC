@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h3><%=token%></h3> -->
+    <var data = <%=token%> ;
+    <!-- <div>
+        <p id="data"><%=token%></p>
+    </div> -->
+</body>
+</html>
+<script>
+    var token = JSON.parse(localStorage.getItem("token")) ;
+        token = [] ;
+    var data = document.querySelector("#data").textContent;
+    localStorage.setItem("token" , JSON.stringify(data)) ;
+</script>
