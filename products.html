@@ -134,10 +134,13 @@
                 <button id="close_button">X Close</i></button>
             </p>
           </div>
+          <div class="cart_items">
+
+          </div>
           <div class="checkout_btn">
             <div>
                 <span>Go to checkout</span>
-                <span>$199</span>
+                <span id="amount">0</span>
             </div>
         </div>
       </div>
@@ -146,7 +149,7 @@
 
 
 <script type="module">
-    import {getData,appendProducts,appendData} from "./scripts/main.js";
+    import {getData,appendProducts,appendData,displayCart} from "./scripts/main.js";
     // import navBar from "./components/navbar_products.js";
 
     let dropdown = document.querySelector("#qty");
@@ -206,11 +209,6 @@
     let container = document.querySelector(".header_container");
     container.innerHTML = navBar()
 
-    // Displaying the number of items.
-    let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
-    let qty_span = document.querySelector("#quantity");
-    qty_span.textContent = cart_items.length;
-
     // debouncing functionality.
     let debounce = document.querySelector(".debouncing");
     debounce.style.display = "none"
@@ -228,20 +226,6 @@
             appendData(res.meals,debounce)
         })
     });
-    
-    // let cat_name = display_obj['name'];
-    // let api_url = `http://127.0.0.1:5000/api/products`;
-
-    // if(cat_name == "Grocery" || cat_name == "Alcohol" || cat_name == "Pets"){
-    //     api_url = `http://127.0.0.1:5000/api/${display_obj['name']}`;
-    // }
-    
-    // let shops_url = "http://127.0.0.1:5000/api/shops";
-
-    // getData(api_url).then((res)=>{
-    //     appendProducts(res,products_div,dropdown)
-
-    // })
 
     // Drodown functionality.
     dropdown.addEventListener("change",()=>{
@@ -275,7 +259,6 @@ document.querySelector("#cart").addEventListener("click",()=>{
     if(cart_items.length == 0){
         return
     }
-    window.location.href = "./checkout/checkout.html"
 })
 
 
@@ -302,5 +285,17 @@ document.querySelector("#cart").addEventListener("click",()=>{
 // closing the right nav menu.
 document.querySelector("#close_button").addEventListener("click",()=>{
     document.querySelector(".rightnav").style.width="0px";
+})
+
+// displaying the cart items into the right nav bar.
+let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
+displayCart(cart_items);
+
+// routing to checkout page.
+
+let logged_in = JSON.parse(localStorage.getItem("logged_in"));
+console.log(logged_in)
+document.querySelector(".checkout_btn").addEventListener("click",()=>{
+    window.location.href = "./checkout/checkout.html"
 })
 </script>

@@ -129,7 +129,9 @@ body{
 }
 
 
-
+#amount{
+    width: 50px;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -301,6 +303,63 @@ body{
       background-color: white;
   }
 
+  .cart_items{
+      margin-top: 20px;
+      height: 70%;
+      overflow: scroll;
+      background: white;
+      padding: 2%
+  }
+
+  .cart_items>div{
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .cart_items>div>div:nth-child(1){
+      display: flex;
+      width: 60%;
+      margin-bottom: 20px;
+  }
+
+  .cart_items>div>div:nth-child(2){
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    font-weight: 350;
+}
+.cart_items>div>div:nth-child(2) p{
+    padding: 10px;
+    font-size: 20px;
+}
+.cart_items>div>div:nth-child(2) p:nth-child(1){
+    padding: 10px 25px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+}
+
+  .cart_items>div>div>div{
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+  .cart_items>div>div:nth-child(1) p{
+    margin: 0;
+    }
+
+.cart_items>div>div:nth-child(1) p:nth-child(1){
+    font-weight: 350;
+}
+.cart_items>div>div:nth-child(1) p:nth-child(2){
+    color: grey;
+}
+
+
+    
+  .cart_items img{
+      width: 25%;
+  }
+
   #button_div{
       display: flex;
       justify-content: space-around;
@@ -312,7 +371,7 @@ body{
     height: 250px;
   }
   #main_img:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
+    -ms-transform: scale(1.5);
     transform: scale(1.5); 
   }
 

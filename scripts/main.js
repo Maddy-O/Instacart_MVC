@@ -73,47 +73,6 @@ function appendProducts(data,location,dropdown){
         });
         location.append(heading_div,div1,hr)
     }
-
-
-    // for(let i = 0;i<store_names.length;i++){
-    //     // First Heading div.
-    //     let heading_div = document.createElement("div");
-    //     let text_div = document.createElement("div");
-
-    //     let img1 = document.createElement("img");
-    //     img1.src = shops[i]['img'];
-    //     let p1 = document.createElement("p");
-    //     p1.textContent = store_names[i];
-    //     let p2 = document.createElement("p");
-    //     p2.textContent = "Delivery avalaible"
-
-    //     text_div.append(p1,p2)
-    //     heading_div.append(img1,text_div)
-
-    //     heading_div.id = "heading_div"
-    //     let hr = document.createElement("hr");
-    //     // Products content div.
-
-    //     let div1 = document.createElement("div");
-    //     // data[store_names[i]].map((elem)=>{
-    //     //     let div2 = document.createElement("div");
-    //     //     let img = document.createElement("img");
-    //     //     img.src = elem['img'];
-    //     //     let p2 = document.createElement("p");
-    //     //     p2.textContent = elem['name'];
-    //     //     div2.append(img,p2)
-    //     //     div1.append(div2)
-    //     //     div2.addEventListener("click",()=>{
-    //     //         localStorage.setItem("display_obj",JSON.stringify(elem))
-    //     //         let modal = document.getElementById("myModal");
-    //     //         let modal_div = document.querySelector(".display_content");
-    //     //         appendModal(elem,modal_div,dropdown)
-    //     //         appendModalData(data[store_names[i]])
-    //     //         modal.style.display = "block";
-    //     //     })
-    //     // })
-    //     location.append(heading_div,div1,hr)
-    // }
 }
 
 function prepareData(data){
@@ -171,8 +130,10 @@ function appendModal(data,location,dropdown){
         let qty = JSON.parse(localStorage.getItem("qty"));
         qty = Number(qty);
         data['price'] = Number(data['price'])*qty;
+        data['qty'] = qty;
         cart_items.push(data);
         localStorage.setItem("cart_items",JSON.stringify(cart_items));
+        displayCart(cart_items)
         window.alert("Item added into the cart")
     })
 
@@ -209,14 +170,11 @@ function appendModalData(data){
        let btn = document.createElement("button");
        btn.innerHTML = `<i class="fa fa-plus" aria-hidden="true"></i> Add`;
        btn.addEventListener("click",()=>{
-           let obj = {
-               "img":data['img'],
-               "name":data['name'],
-               "price":data['price']
-           }
-           cart_items.push(obj);
-           localStorage.setItem("cart_items",JSON.stringify(cart_items));
-           window.alert("Item added into the cart");
+        elem['qty'] = 1;
+        cart_items.push(elem);
+        localStorage.setItem("cart_items",JSON.stringify(cart_items));
+        displayCart(cart_items)
+        window.alert("Item added into the cart");
            
        })
        div.append(img1,p1,p2,p3,btn);
@@ -225,4 +183,54 @@ function appendModalData(data){
        main_div.append(div)
     });
 }
-export {getData,appendData,appendProducts};
+
+function displayCart(cart_items){
+    let sum = 0;
+    let qty_span = document.querySelector("#quantity");
+    qty_span.textContent = cart_items.length;
+        let location = document.querySelector(".cart_items");
+        location.innerHTML = "";
+        cart_items.forEach((element,index) => {
+            sum+=Number(element['price'])
+            let sum_text = document.querySelector("#amount");
+            sum_text.textContent = Math.round(sum);
+            let div = document.createElement("div");
+            let div1 = document.createElement("div");
+            let img = document.createElement("img");
+            img.src = element['img'];
+
+            let text_div = document.createElement("div");
+
+            let p1 = document.createElement("p");
+            p1.textContent = element['name']
+
+            let p2 = document.createElement("p");
+            p2.textContent = element['weight'];
+
+            let btn = document.createElement("p");
+
+            // Adding delete functionality
+            btn.addEventListener("click",()=>{
+                location.innerHTML = "";
+                cart_items.splice(index,1);
+                localStorage.setItem("cart_items",JSON.stringify(cart_items));
+                displayCart(cart_items)
+            })
+            btn.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i> Remove`
+            text_div.append(p1,p2,btn);
+            div1.append(img,text_div);
+
+            let price_div = document.createElement("div");
+
+            let qty = document.createElement("p");
+            let price = document.createElement("p");
+
+            qty.textContent = element['qty'];
+            price.textContent = "$"+element['price'];
+            price_div.append(qty,price);
+
+            div.append(div1,price_div)
+            location.append(div)
+    });
+}
+export {getData,appendData,appendProducts,displayCart};
