@@ -39,7 +39,6 @@ services via a website and mobile app.
 - [Madan Mohan](https://github.com/Maddy-O)
 - [Dhruv Bhardwaj](https://github.com/Dhruv-bhardwaj99)
 - [Paritosh Parihar](https://github.com/i-am-parihar)
-- [Arpan Kushwah](https://github.com/arpankushwah8)
 
 
 
