@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/index.css">
     <style>
-        body{
+        body {
             background-color: #f7f7f7;
             margin: 0%;
         }
-        #navBar{
+
+        #navBar {
             width: 100%;
             height: 50px;
             margin: 0 auto;
             background-color: white;
         }
-        #navBar>div{
+
+        #navBar>div {
             width: 20%;
             height: 100%;
             margin: auto;
         }
-        #navBar img{
+
+        #navBar img {
             width: 100%;
             height: 100%;
         }
-        #main{
+
+        #main {
             width: 50%;
-            height: 500px;
+            /* height: 500px; */
             margin: 2% auto;
-            margin-bottom: 1%;
+            margin-bottom: 2%;
             display: flex;
             justify-content: space-between;
         }
-        button{
+
+        button {
             margin-left: 25%;
             width: 50.2%;
             font-size: 18px;
@@ -43,80 +50,103 @@
             color: white;
             cursor: pointer;
         }
-        #leftside{
+
+        #leftside {
             width: 49%;
-            height: 100%;
+            /* height: 100%; */
             border: 1px solid green;
             background-color: white;
         }
-        h2{
+
+        h2 {
             text-align: center;
             font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        #rightside{
+
+        #rightside {
             width: 49%;
-            height: 100%;
+            /* height: 100%; */
             border: 1px solid green;
             background-color: white;
+            /* padding-bottom: 15px; */
         }
-        #stateIndo{
+
+        #stateIndo {
             display: flex;
         }
-        #leftside > input{
+
+        #idk {
+            margin-bottom: 50px;
+        }
+
+        #leftside>input {
             width: 85%;
             font-size: 17px;
             padding: 6px;
             margin: 3% 4%;
             margin-bottom: 5%;
-            
+            margin-top: 3px;
+
         }
-        #leftside > label{
+
+        #leftside>label {
             font-size: 20px;
             font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 4%;
-            text-decoration: underline green;
+            margin-bottom: 0px;
+            /* text-decoration: underline green; */
         }
 
-        #stateInfo > label{
+        #stateInfo>label {
             font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             font-size: 18px;
             margin-left: 7%;
         }
-        #stateInfo > label:nth-child(2){
+
+        #stateInfo>label:nth-child(2) {
             margin-left: 24%;
         }
-        #idk > input {
+
+        #idk>input {
             width: 30%;
             font-size: 18px;
             margin-left: 6.8%;
             padding: 5px;
         }
-        #idk > input:nth-child(2){
+
+        #idk>input:nth-child(2) {
             margin-left: 4%;
         }
-        #rightside > label{
+
+        #rightside>label {
             font-size: 20px;
             font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 4%;
-            text-decoration: underline green;
+            margin-bottom: 0px;
+            /* text-decoration: underline green; */
         }
-        #rightside > input{
+
+        #rightside>input {
             width: 85%;
             font-size: 17px;
             padding: 6px;
             margin: 3% 4%;
             margin-bottom: 5%;
-            
+            margin-top: 3px;
+
         }
-        #rightside > img{
-            width: 75%;
-            margin: 3%;
-            height: 40px;
+
+        #rightside>img {
+            width: 84%;
+        }
+
+        #order {
+            margin-bottom: 180px;
         }
 
 
-        .popup .overlay{
-            position:fixed;
+        .popup .overlay {
+            position: fixed;
             top: 0px;
             left: 0px;
             width: 100vw;
@@ -127,12 +157,12 @@
             display: none;
         }
 
-        .popup .content{
+        .popup .content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background:#f9fbfa;
+            background: #f9fbfa;
             width: 450px;
             height: 220px;
             z-index: 2;
@@ -142,7 +172,7 @@
             border-radius: 10px;
         }
 
-        .popup .close-btn{
+        .popup .close-btn {
             cursor: pointer;
             position: absolute;
             right: 20px;
@@ -158,60 +188,68 @@
             border-radius: 50%;
         }
 
-        .popup.active .overlay{
+        .popup.active .overlay {
             display: block;
         }
 
-        .popup.active .content{
+        .popup.active .content {
             transition: all 300ms ease-in-out;
             transform: translate(-50%, -50%) scale(1);
         }
     </style>
 </head>
+
 <body>
-    <div id="navBar">
+    <header id="bar">
+
+    </header>
+
+    <!-- <div id="navBar">
         <div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-nnkPLzXsD6a4NlipGrg1vEMidKG1UeGW0iidXlWPQD6Cr3nsLavsI_gx2YEjlqOp_Q&usqp=CAU" alt="logo">
         </div>
-    </div>
+    </div> -->
     <div id="main">
         <div id="leftside">
             <h2>BILLING ADDRESS</h2>
             <label>Full Name:</label>
-            <input type="text" placeholder="John Deo" id="name"/>
+            <input type="text" placeholder="John Deo" id="name" />
             <label for="">Email:</label>
-            <input type="email" placeholder="Example@Example.com" id="Email"/>
+            <input type="email" placeholder="Example@Example.com" id="Email" />
             <label for="">Address:</label>
-            <input type="text" id="address" placeholder="Room-Street-Location"/>
+            <input type="text" id="address" placeholder="Room-Street-Location" />
             <label>City:</label>
-            <input type="text" id="city" placeholder="Mumbai"/>
+            <input type="text" id="city" placeholder="Mumbai" />
             <div id="stateInfo">
                 <label>State:</label>
                 <label>Zip Code:</label>
             </div>
             <div id="idk" style="display: flex;">
-                <input type="text" id="state" placeholder="India"/>
-                <input type="number" id="zip" placeholder="123 456"/>
+                <input type="text" id="state" placeholder="India" />
+                <input type="number" id="zip" placeholder="123 456" />
             </div>
         </div>
         <div id="rightside">
             <h2>PAYMENT</h2>
             <label>Accepted Cards:</label>
             <br>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzUIL2wVsIJQTkGSXfn-E12ujei50QN32Bze94wEjFJcgM0qTTsinnhnh1c_MObw0qoQ&usqp=CAU" alt="payment">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzUIL2wVsIJQTkGSXfn-E12ujei50QN32Bze94wEjFJcgM0qTTsinnhnh1c_MObw0qoQ&usqp=CAU"
+                alt="payment">
+            <br>
+
             <label>Name on Card:</label>
-            <input type="text" id="card" placeholder="Mr.John Deo"/>
+            <input type="text" id="card" placeholder="Mr.John Deo" />
             <label>Credit Card Number:</label>
-            <input type="number" id="cardNo." placeholder="1111-2222-3333-4444"/>
+            <input type="number" id="cardNo." placeholder="1111-2222-3333-4444" />
             <label>Exp Month:</label>
-            <input type="text" id="month" placeholder="January"/>
+            <input type="text" id="month" placeholder="January" />
             <div id="stateInfo">
                 <label>Exp Year:</label>
                 <label>CVV:</label>
             </div>
             <div id="idk" style="display: flex;">
-                <input type="number" id="state" placeholder="2022"/>
-                <input type="number" id="zip" placeholder="1234"/>
+                <input type="number" id="state" placeholder="2022" />
+                <input type="number" id="zip" placeholder="1234" />
             </div>
         </div>
     </div>
@@ -226,20 +264,34 @@
     </div>
 
 
-    <button onclick="togglePopup()">Conform Order</button>
+    <button id="order" onclick="togglePopup()">Conform Order</button>
+
+    <footer id="foot"></footer>
+
 </body>
+
 </html>
 
-<script>
+<script type="module">
+
+    import header from "../components/header.js";
+    let top = document.getElementById("bar");
+    top.innerHTML = header();
+
+    import footer from "../components/footer.js";
+    let base = document.getElementById("foot");
+    base.innerHTML = footer();
+
+
     // document.getElementById("popup-1").innerHTML = "";
-    function togglePopup(){
+    function togglePopup() {
         document.getElementById("popup-1").classList.toggle("active");
         // document.getElementById("popup-1").innerHTML = "";
         appendName();
     }
 
-    
-    function appendName(){
+
+    function appendName() {
         let name = document.getElementById("name").value;
         console.log('name:', name);
         let div = document.createElement("div");
