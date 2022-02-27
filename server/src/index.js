@@ -13,6 +13,11 @@ const optionController = require("./controllers/cat.controller");
 const {register,login} = require("./controllers/authentication.controller");
 const usersController = require("./controllers/user.controller");
 
+//checkout controller-----------------------------------------------------------------------
+const billingAddressController = require("./controllers/billingAddress.controller");
+const cardDetailController = require("./controllers/cardDetail.controller");
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -28,6 +33,11 @@ app.use("/options", optionController);
 app.use("/register" , register) ;
 app.use("/login" , login) ;
 app.use("/users", usersController);
+
+// Checkout---------------------------------------------------------------------------------
+app.use("/checkoutAddress", billingAddressController);
+app.use("//checkoutCard", cardDetailController);
+
 
 // Turning on the server and connection with db.
 app.listen(port,async () =>{
