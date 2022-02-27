@@ -1,6 +1,5 @@
 function footer(term) {
-
-    return `
+  return `
     <div class="css-0">
             <div class="css-jfggi0">
                 <div class="css-51gelt">
@@ -292,6 +291,6 @@ function footer(term) {
                 </div>
             </div>
         </div>
-    `
+    `;
 }
-export default footer
+export default footer;
