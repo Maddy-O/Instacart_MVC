@@ -96,30 +96,42 @@
         })
     });
 
+    let categories;
+    let categories_url = "http://localhost:5000/category";
+    getData(categories_url).then((res)=>{
+        categories = res;    
+    })
     
-    let categories = returnCatgories();
+    setTimeout(() => {
+            appendCats(categories)
+    }, 500);
+    
+
     let categories_div = document.querySelector(".categories");
-    for(let x in categories){
-        let div = document.createElement("div");
-        let img = document.createElement("img");
-        img.src = categories[x]['img'];
-        let p1 = document.createElement("p");
-        p1.textContent = categories[x]['name'];
-        div.append(img,p1);
-        div.addEventListener("click",()=>{
-            let obj = {
-                "name":categories[x]['name'],
-                "bg_img":categories[x]['bg_img']
-            }
-            localStorage.setItem("cat_obj",JSON.stringify(obj))
-            window.location.href = "products.html"
-        })
-        categories_div.append(div);
+    
+    function appendCats(categories){
+        categories.forEach(elem => {
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            img.src = elem['img'];
+            let p1 = document.createElement("p");
+            p1.textContent = elem['name'];
+            div.append(img,p1);
+            div.addEventListener("click",()=>{
+                let obj = {
+                    "name":elem['name'],
+                    "poster":elem['poster'],
+                    "id":elem['_id']
+                }
+                localStorage.setItem("cat_obj",JSON.stringify(obj))
+                window.location.href = "products.html"
+            })
+            categories_div.append(div);
+        });
     }
 
     let data = JSON.parse(localStorage.getItem("cart_items"))||[] ;
     let length = data.length ;
-    console.log("data" ,data);
     document.getElementById("orderItam").innerText = length ;
 
     displaycart(data) ;
@@ -165,7 +177,6 @@
     }
     document.querySelector(".total").textContent = "₹" + count ;
     document.querySelector(".total_chartBox").textContent = "₹" + count ;
-    console.log(count) ;
 
     function deleteItem(price , id){
         event.target.parentNode.remove() ;
@@ -218,7 +229,6 @@
     var logo13 = new obj("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1781/3a7980ab-7c07-49c0-9627-a60ab57f5bd9.jpeg", "Sunbasket", "Delivery available");
 
     var logo_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13];
-    console.log("Slot 1:",logo_arr);
     logo_arr.map(function(elem){
         var main = document.createElement("div");
         var div = document.createElement("div");
@@ -252,7 +262,6 @@
     var poster6 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1831/cd67e0ba-6568-422e-901c-c943d898ff36.png","FoodsCo Delivery Now","Delivery by 10:45pm");
 
     var poster_arr = [poster1, poster2, poster3, poster4, poster5, poster6];
-    console.log('poster_arr:', poster_arr);
 
     poster_arr.map(function(e){
         var main = document.createElement("div");
@@ -282,7 +291,7 @@
     var place2 = new obj2("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/173/08431e59-4a11-4f2f-8e3b-6767e5f2f066.png", "CHEF'STORE", "Delivery by 10:45am");
 
     var place_arr = [place1, place2];
-    console.log('place_arr:', place_arr);
+
 
     place_arr.map(function(e){
         var main = document.createElement("div");
@@ -313,7 +322,6 @@
     var logo3 = new obj3("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/611/e41762fd-41c5-4f79-a202-4ea8df5020ab.png", "FoodMax", "Delivery by 9:00am, only pickup available");
 
     var slot_arr = [logo1, logo2, logo3];
-    console.log('slot_arr:', slot_arr);
 
     slot_arr.map(function(e){
         var main = document.createElement("div");
@@ -351,7 +359,6 @@
     var logo10 = new obj4("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1661/c3157d68-5595-4f81-a272-0f9418bbc361.png", "Sports Basement", "Delivery by 2:00pm");
 
     var fav_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10];
-    console.log('fav_arr:', fav_arr);
 
     fav_arr.map(function(e){
         var main = document.createElement("div");
@@ -392,7 +399,6 @@
     var logo13 = new obj5("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/566/b735368c-fc09-4576-baf2-9f6332c966f9.png", "Gellen Ellen Village Market", "Pickup available");
 
     var fav2_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13];
-    console.log('fav2_arr:', fav2_arr)
 
     fav2_arr.map(function(e){
         var main = document.createElement("div");
@@ -422,7 +428,6 @@
     var logo2 = new obj6("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1831/cd67e0ba-6568-422e-901c-c943d898ff36.png", "FoodsCo Delivery Now", "Delivery by 7:30am");
 
     var fav3_arr = [logo1, logo2];
-    console.log('fav3_arr:', fav3_arr);
 
     fav3_arr.map(function(e){
         var main = document.createElement("div");
@@ -471,7 +476,6 @@
     var logo21 = new obj7("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/611/e41762fd-41c5-4f79-a202-4ea8df5020ab.png", "FoodMaxx", "Delivery by 4:10pm");
 
     var fav4_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21];
-    console.log('fav4_arr:', fav4_arr);
 
     fav4_arr.map(function(e){
         var main = document.createElement("div");
@@ -539,7 +543,6 @@
     var logo9 = new obj9("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1572/eb971526-0232-473a-96a0-0e3a19bf8569.png", "Cardenas Markets", "Delivery by 5:45pm");
 
     var fav6_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9];
-    console.log('fav6_arr:', fav6_arr)
 
     fav6_arr.map(function(e){
         var main = document.createElement("div");
@@ -569,7 +572,6 @@
     var logo2 = new obj10("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/118/c7780a16-90f9-4596-b82b-af4121fe1ca0.png", "CVS Pharmacy", "Delivery by 10:30pm");
 
     var fav7_arr = [logo1, logo2];
-    console.log('fav7_arr:', fav7_arr);
 
     fav7_arr.map(function(e){
         var main = document.createElement("div");
@@ -598,7 +600,6 @@
     var logo1 = new obj11("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/90/e989cfbe-8f4c-4ee2-be6a-b2416407a00a.png", "Petco", "Delivrey by 3:05pm");
     var logo2 = new obj11("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/208/41ede53f-f19a-49a4-ba67-dbe789b5e097.png", "Healthy Spot- Organic Pet Food", "Delivrey by 3:05pm");
     var fav8_arr = [logo1, logo2];
-    console.log('fav8_arr:', fav8_arr)
 
     fav8_arr.map(function(e){
         var main = document.createElement("div");

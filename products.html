@@ -18,19 +18,10 @@
             <span id="cat_span"></span>
         </div>
         <div class="product_categories">
-            <span>Popular</span>
-            <span>Produce</span>
-            <span>Deli & Prepared Foods</span>
-            <span>Snacks and Candy</span>
-            <span>Frozen</span>
-            <span>Bakery</span>
-            <span>Alcohol</span>
-            <span>Personal Care</span>
-            <span>Beauty</span>
-            <span>Hosehold</span>
-        </div>
-        <div class="product_lists">
 
+        </div>
+        <div class="display_product">
+            
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -58,12 +49,107 @@
         <option value="9">9</option>
         <option value="10">10</option>
     </select>
+
+    <div id="mySidenav" class="sidenav">
+        <div>
+            <span id="username">Username</span>
+            <p>Instacart customer since</p>
+            <p>January 2022</p>
+        </div>
+        <div class="offer_div">
+            <p>Start your free trial today!</p>
+            <p>You can cancel any time.</p>
+            <button>Try express for free</button>
+        </div>
+        <hr>
+        <div class="menu">
+            <div>
+                <i class="fa fa-home" style="font-size:25px"></i>
+                <span>Stores</span>
+            </div>
+            <div>
+                <i class="fa fa-address-card" style="font-size:25px"></i>
+                <span>Your Orders</span>
+            </div>
+            <div>
+                <i class="fa fa-address-book" style="font-size:25px"></i>
+                <span>Your Recipes</span>
+            </div>
+            <div>
+                <i class="fa fa-gear" style="font-size:25px"></i>
+                <span>Your Account Settings</span>
+            </div>
+            <div>
+                <i class="fa fa-bolt" style="font-size:25px;color: yellow;"></i>
+                <span>Try Instacart Express</span>
+            </div>
+        </div>
+        <hr>
+        <div class="credits_div">
+            <div>
+                Credits and Promos
+            </div>
+            <div>
+                <i class="fa fa-dollar" style="font-size:25px"></i>
+                <span>Invite friends, get $1000</span>
+            </div>
+            <div>
+                <i class="fa fa-gift" style="font-size:25px"></i>
+                <span>Buy gift Cards</span>
+            </div>
+            <div>
+                <i class="fa fa-tag" style="font-size:25px"></i>
+                <span>Add promo or gift card</span>
+            </div>
+        </div>
+        <hr>
+        <div class="credits_div">
+            <div>
+                Support
+            </div>
+            <div style="color: black">
+                <i class="fa fa-headphones" style="font-size:25px"></i>
+                <span>Help Center</span>
+            </div>
+            <div>
+                <i class="fa fa-lightbulb-o" style="font-size:25px"></i>
+                <span>How Instacart Works</span>
+            </div>
+        </div>
+        <hr>
+        <div class="credits_div">
+            <div style="color: black;">
+                <i class="fa fa-sign-out" style="font-size:25px"></i>
+                <span>Log out</span>
+            </div>
+        </div>
+      </div>
+      <div class="rightnav">
+          <div class="rightnav_head">
+            <div>
+                <p>Items added into Cart</p>
+                <p>Shpping in 04038</p>
+            </div>
+            <p>
+                <button id="close_button">X Close</i></button>
+            </p>
+          </div>
+          <div class="cart_items">
+
+          </div>
+          <div class="checkout_btn">
+            <div>
+                <span>Go to checkout</span>
+                <span id="amount">0</span>
+            </div>
+        </div>
+      </div>
 </body>
 </html>
 
 
 <script type="module">
-    import {getData,appendProducts,appendData} from "./scripts/main.js";
+    import {getData,appendProducts,appendData,displayCart} from "./scripts/main.js";
     // import navBar from "./components/navbar_products.js";
 
     let dropdown = document.querySelector("#qty");
@@ -75,16 +161,53 @@
     // Changing the title and the bg according to selected category.
     let display_obj = JSON.parse(localStorage.getItem("cat_obj"))||{};
     document.querySelector("#cat_span").textContent = display_obj['name'];
-    document.querySelector(".heading").style.backgroundImage = `url(${display_obj['bg_img']})`;
+    document.querySelector(".heading").style.backgroundImage = `url(${display_obj['poster']})`;
+
+    // Working and displaying subcategories.
+    let subCategory_url = `http://localhost:5000/subCategory/${display_obj['id']}`
+    let subcategories;
+
+    getData(subCategory_url).then((res)=>{
+        subcategories = res;
+    })
+
+    setTimeout(() => {
+        subcategories.unshift({name:"popular"})
+        displaySubs(subcategories)
+    }, 500);
+
+     // Making the api call.
+     let cat_id = display_obj['id'];
+     let products_div = document.querySelector(".display_product");
+     let api_url = `http://localhost:5000/product/${display_obj['id']}`;
+     getData(api_url).then((res)=>{
+         appendProducts(res,products_div,dropdown)
+     })
+     
+    function displaySubs(subcategories){
+        let main_div = document.querySelector(".product_categories");
+        subcategories.forEach(element => {
+            let span = document.createElement("span");
+            span.textContent = element['name'];
+            span.addEventListener("click",()=>{
+                products_div.innerHTML = "";
+                if(element['name']!="popular"){
+                    api_url = `http://localhost:5000/product/${display_obj['id']}?sub_category=${element['_id']}`;
+                }
+                else{
+                    api_url = `http://localhost:5000/product/${display_obj['id']}`
+                }
+                getData(api_url).then((res)=>{
+                    appendProducts(res,products_div,dropdown)
+                })
+            })
+            main_div.append(span)
+        });
+    }
 
     // Appending the navbar into html.
     let container = document.querySelector(".header_container");
     container.innerHTML = navBar()
-
-    // Displaying the number of items.
-    let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
-    let qty_span = document.querySelector("#quantity");
-    qty_span.textContent = cart_items.length;
 
     // debouncing functionality.
     let debounce = document.querySelector(".debouncing");
@@ -95,7 +218,7 @@
         let search_term = document.querySelector("#searchBar").value;
         let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search_term}`
         getData(url).then((res)=>{
-            if(res.meals == null)
+            if(res.meals == null || search_term == null)
             {
                 debounce.style.display = "none"
                 return
@@ -103,21 +226,6 @@
             appendData(res.meals,debounce)
         })
     });
-    
-    // Making the api call.
-    let cat_name = display_obj['name'];
-    let api_url = `http://127.0.0.1:5000/api/products`;
-
-    if(cat_name == "Grocery" || cat_name == "Alcohol" || cat_name == "Pets"){
-        api_url = `http://127.0.0.1:5000/api/${display_obj['name']}`;
-    }
-    
-    let shops_url = "http://127.0.0.1:5000/api/shops";
-
-    let products_div = document.querySelector(".product_lists")
-    getData(api_url).then((res)=>{
-        appendProducts(res,products_div,dropdown)
-    })
 
     // Drodown functionality.
     dropdown.addEventListener("change",()=>{
@@ -151,6 +259,43 @@ document.querySelector("#cart").addEventListener("click",()=>{
     if(cart_items.length == 0){
         return
     }
+})
+
+
+document.querySelector("#menu").addEventListener("click",()=>{
+    document.getElementById("mySidenav").style.width = "300px";
+})
+
+// When the user clicks anywhere outside of the navbar, close it
+window.onclick = function(event) {
+  if (event.target != document.getElementById("menu")) {
+    document.getElementById("mySidenav").style.width = "0px"
+  }
+}
+
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+// opening the right nav menu.
+document.querySelector("#cart").addEventListener("click",()=>{
+    document.querySelector(".rightnav").style.width = "500px"
+})
+
+// closing the right nav menu.
+document.querySelector("#close_button").addEventListener("click",()=>{
+    document.querySelector(".rightnav").style.width="0px";
+})
+
+// displaying the cart items into the right nav bar.
+let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
+displayCart(cart_items);
+
+// routing to checkout page.
+
+let logged_in = JSON.parse(localStorage.getItem("logged_in"));
+console.log(logged_in)
+document.querySelector(".checkout_btn").addEventListener("click",()=>{
     window.location.href = "./checkout/checkout.html"
 })
 </script>

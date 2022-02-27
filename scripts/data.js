@@ -84,5 +84,23 @@ function returnCatgories(){
     ]
     return categories
 }
+// asa
+
+let url = "http://localhost:5000/category";
+async function getData(url){
+    try{
+        let res = await fetch(url,{
+            mode:'cors',
+            headers:{
+                'Access-Control-Allow-Origin':'*'
+            }
+        });
+        let data = await res.json();
+        return data
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 
 export {returnCatgories,returnShops};
