@@ -1,5 +1,5 @@
-function navBar(){
-    return `
+function navBar() {
+  return `
     <!-- nav-bar -->
     <nav class="flex-div">       
         <div class="nav-left flex-div">
@@ -78,7 +78,7 @@ function navBar(){
               </div>
            </div>       
        </div>
-    `
+    `;
 }
 
 export default navBar;

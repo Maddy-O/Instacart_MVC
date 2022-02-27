@@ -41,7 +41,7 @@ router.post(
   body("zipcode")
     .isLength({ min: 8, max: 20 })
     .custom((value) => {
-      if (!value==isEmpty) {
+      if (!value == isEmpty) {
         return true;
       }
       throw new Error("Please fill zipcode");

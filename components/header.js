@@ -1,6 +1,5 @@
 function header(term) {
-
-    return `
+  return `
     <nav id="item">
             <div class="left">
                 <div class="menu">
@@ -22,6 +21,6 @@ function header(term) {
                     </button>
             </div>
         </nav>
-    `
+    `;
 }
-export default header
+export default header;
