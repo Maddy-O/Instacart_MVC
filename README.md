@@ -30,7 +30,7 @@ services via a website and mobile app.
 
 **Client:** JavaScript,HTML and CSS.
 
-**Server:** Node,JSON-Server
+**Server:** Node,MongoDB,Express
 
 
 ## Authors
