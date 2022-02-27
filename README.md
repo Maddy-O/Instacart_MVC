@@ -1,5 +1,5 @@
 
-# Insta Cart Clone (Construct Week 2 Project)
+# Insta Cart Clone (Construct Week 3 Project)
 
 The project is basically a clone of the instacart website.
 Instacart is an American company that operates a grocery delivery and pick-up service in the United States and Canada. The company offers its
