@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,42 +8,44 @@
     <link rel="stylesheet" href="/">
     <link rel="stylesheet" href="./styles/login_regis.css">
 </head>
+
 <body>
     <div id="mainDiv">
         <div id="firstDiv">
             <p id="loginFont">Log in</p>
             <input type="email" value="" placeholder="Email" class="input_Box" id="email"><br>
             <input type="password" value="" placeholder="Password" class="input_Box" id="password"><br>
-            <input type="submit" onclick="login()" value="Log in" id="button" class="input_Box" name="submit">  
-        </form>
-        <hr id="line">
-        <p class="last_line">Don't have an account?</p>
-        <a href="register.html" id="Link">Sign up</a>    
-    </hr>
+            <input type="submit" onclick="login()" value="Log in" id="button" class="input_Box" name="submit">
+            </form>
+            <hr id="line">
+            <p class="last_line">Don't have an account?</p>
+            <a href="register.html" id="Link">Sign up</a>
+            </hr>
 </body>
+
 </html>
 <script type="text/javascript">
     let logged_in = JSON.parse(localStorage.getItem("logged_in"));
-    async function login(){
-        try{
+    async function login() {
+        try {
             let data = {
-                "email":document.querySelector("#email").value,
-                "password":document.querySelector("#password").value
+                "email": document.querySelector("#email").value,
+                "password": document.querySelector("#password").value
             }
             data = JSON.stringify(data);
             console.log(data)
-            let response = await fetch("http://localhost:5000/login",{
-            method:'POST',
-            body:data,
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization":`${logged_in['token']}`
-            }
-        });
-        let res = await response.json();
-        window.location.href = "landing_page.html"
+            let response = await fetch("http://localhost:5000/login", {
+                method: 'POST',
+                body: data,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `${logged_in['token']}`
+                }
+            });
+            let res = await response.json();
+            window.location.href = "landing_page.html"
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }

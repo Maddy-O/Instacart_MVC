@@ -1,208 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/index.css" />
     <style>
-        body {
-            background-color: #f7f7f7;
-            margin: 0%;
-        }
+      body {
+        background-color: #f7f7f7;
+        margin: 0%;
+      }
 
-        #navBar {
-            width: 100%;
-            height: 50px;
-            margin: 0 auto;
-            background-color: white;
-        }
+      #navBar {
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        background-color: white;
+      }
 
-        #navBar>div {
-            width: 20%;
-            height: 100%;
-            margin: auto;
-        }
+      #navBar > div {
+        width: 20%;
+        height: 100%;
+        margin: auto;
+      }
 
-        #navBar img {
-            width: 100%;
-            height: 100%;
-        }
+      #navBar img {
+        width: 100%;
+        height: 100%;
+      }
 
-        #main {
-            width: 50%;
-            /* height: 500px; */
-            margin: 2% auto;
-            margin-bottom: 2%;
-            display: flex;
-            justify-content: space-between;
-        }
+      #main {
+        width: 50%;
+        /* height: 500px; */
+        margin: 2% auto;
+        margin-bottom: 2%;
+        display: flex;
+        justify-content: space-between;
+      }
 
-        button {
-            margin-left: 25%;
-            width: 50.2%;
-            font-size: 18px;
-            padding: 10px;
-            background-color: #43b02a;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
+      button {
+        margin-left: 25%;
+        width: 50.2%;
+        font-size: 18px;
+        padding: 10px;
+        background-color: #43b02a;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
 
-        #leftside {
-            width: 49%;
-            /* height: 100%; */
-            border: 1px solid green;
-            background-color: white;
-        }
+      #leftside {
+        width: 49%;
+        /* height: 100%; */
+        border: 1px solid green;
+        background-color: white;
+      }
 
-        h2 {
-            text-align: center;
-            font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+      h2 {
+        text-align: center;
+        font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
 
-        #rightside {
-            width: 49%;
-            /* height: 100%; */
-            border: 1px solid green;
-            background-color: white;
-            /* padding-bottom: 15px; */
-        }
+      #rightside {
+        width: 49%;
+        /* height: 100%; */
+        border: 1px solid green;
+        background-color: white;
+        /* padding-bottom: 15px; */
+      }
 
-        #stateIndo {
-            display: flex;
-        }
+      #stateIndo {
+        display: flex;
+      }
 
-        #idk {
-            margin-bottom: 50px;
-        }
+      #idk {
+        margin-bottom: 50px;
+      }
 
-        #leftside>input {
-            width: 85%;
-            font-size: 17px;
-            padding: 6px;
-            margin: 3% 4%;
-            margin-bottom: 5%;
-            margin-top: 3px;
+      #leftside > input {
+        width: 85%;
+        font-size: 17px;
+        padding: 6px;
+        margin: 3% 4%;
+        margin-bottom: 5%;
+        margin-top: 3px;
+      }
 
-        }
+      #leftside > label {
+        font-size: 20px;
+        font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        margin: 4%;
+        margin-bottom: 0px;
+        /* text-decoration: underline green; */
+      }
 
-        #leftside>label {
-            font-size: 20px;
-            font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 4%;
-            margin-bottom: 0px;
-            /* text-decoration: underline green; */
-        }
+      #stateInfo > label {
+        font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        margin-left: 7%;
+      }
 
-        #stateInfo>label {
-            font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 18px;
-            margin-left: 7%;
-        }
+      #stateInfo > label:nth-child(2) {
+        margin-left: 24%;
+      }
 
-        #stateInfo>label:nth-child(2) {
-            margin-left: 24%;
-        }
+      #idk > input {
+        width: 30%;
+        font-size: 18px;
+        margin-left: 6.8%;
+        padding: 5px;
+      }
 
-        #idk>input {
-            width: 30%;
-            font-size: 18px;
-            margin-left: 6.8%;
-            padding: 5px;
-        }
+      #idk > input:nth-child(2) {
+        margin-left: 4%;
+      }
 
-        #idk>input:nth-child(2) {
-            margin-left: 4%;
-        }
+      #rightside > label {
+        font-size: 20px;
+        font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        margin: 4%;
+        margin-bottom: 0px;
+        /* text-decoration: underline green; */
+      }
 
-        #rightside>label {
-            font-size: 20px;
-            font-family: Eina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 4%;
-            margin-bottom: 0px;
-            /* text-decoration: underline green; */
-        }
+      #rightside > input {
+        width: 85%;
+        font-size: 17px;
+        padding: 6px;
+        margin: 3% 4%;
+        margin-bottom: 5%;
+        margin-top: 3px;
+      }
 
-        #rightside>input {
-            width: 85%;
-            font-size: 17px;
-            padding: 6px;
-            margin: 3% 4%;
-            margin-bottom: 5%;
-            margin-top: 3px;
+      #rightside > img {
+        width: 84%;
+      }
 
-        }
+      #order {
+        margin-bottom: 180px;
+      }
 
-        #rightside>img {
-            width: 84%;
-        }
+      .popup .overlay {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(0, 0, 0);
+        opacity: 0.7;
+        z-index: 1;
+        display: none;
+      }
 
-        #order {
-            margin-bottom: 180px;
-        }
+      .popup .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #f9fbfa;
+        width: 450px;
+        height: 220px;
+        z-index: 2;
+        text-align: center;
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
 
+      .popup .close-btn {
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 30px;
+        height: 30px;
+        background: #73ae3c;
+        color: white;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+      }
 
-        .popup .overlay {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgb(0, 0, 0);
-            opacity: 0.7;
-            z-index: 1;
-            display: none;
-        }
+      .popup.active .overlay {
+        display: block;
+      }
 
-        .popup .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: #f9fbfa;
-            width: 450px;
-            height: 220px;
-            z-index: 2;
-            text-align: center;
-            padding: 30px;
-            box-sizing: border-box;
-            border-radius: 10px;
-        }
-
-        .popup .close-btn {
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            width: 30px;
-            height: 30px;
-            background: #73ae3c;
-            color: white;
-            font-size: 22px;
-            font-weight: 600;
-            line-height: 30px;
-            text-align: center;
-            border-radius: 50%;
-        }
-
-        .popup.active .overlay {
-            display: block;
-        }
-
-        .popup.active .content {
-            transition: all 300ms ease-in-out;
-            transform: translate(-50%, -50%) scale(1);
-        }
+      .popup.active .content {
+        transition: all 300ms ease-in-out;
+        transform: translate(-50%, -50%) scale(1);
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <header id="bar">
-
-    </header>
+  <body>
+    <header id="bar"></header>
 
     <!-- <div id="navBar">
         <div>
@@ -210,102 +208,97 @@
         </div>
     </div> -->
     <div id="main">
-        <div id="leftside">
-            <h2>BILLING ADDRESS</h2>
-            <label>Full Name:</label>
-            <input type="text" placeholder="John Deo" id="name" />
-            <label for="">Email:</label>
-            <input type="email" placeholder="Example@Example.com" id="Email" />
-            <label for="">Address:</label>
-            <input type="text" id="address" placeholder="Room-Street-Location" />
-            <label>City:</label>
-            <input type="text" id="city" placeholder="Mumbai" />
-            <div id="stateInfo">
-                <label>State:</label>
-                <label>Zip Code:</label>
-            </div>
-            <div id="idk" style="display: flex;">
-                <input type="text" id="state" placeholder="India" />
-                <input type="number" id="zip" placeholder="123 456" />
-            </div>
+      <div id="leftside">
+        <h2>BILLING ADDRESS</h2>
+        <label>Full Name:</label>
+        <input type="text" placeholder="John Deo" id="name" />
+        <label for="">Email:</label>
+        <input type="email" placeholder="Example@Example.com" id="Email" />
+        <label for="">Address:</label>
+        <input type="text" id="address" placeholder="Room-Street-Location" />
+        <label>City:</label>
+        <input type="text" id="city" placeholder="Mumbai" />
+        <div id="stateInfo">
+          <label>State:</label>
+          <label>Zip Code:</label>
         </div>
-        <div id="rightside">
-            <h2>PAYMENT</h2>
-            <label>Accepted Cards:</label>
-            <br>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzUIL2wVsIJQTkGSXfn-E12ujei50QN32Bze94wEjFJcgM0qTTsinnhnh1c_MObw0qoQ&usqp=CAU"
-                alt="payment">
-            <br>
+        <div id="idk" style="display: flex">
+          <input type="text" id="state" placeholder="India" />
+          <input type="number" id="zip" placeholder="123 456" />
+        </div>
+      </div>
+      <div id="rightside">
+        <h2>PAYMENT</h2>
+        <label>Accepted Cards:</label>
+        <br />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzUIL2wVsIJQTkGSXfn-E12ujei50QN32Bze94wEjFJcgM0qTTsinnhnh1c_MObw0qoQ&usqp=CAU"
+          alt="payment"
+        />
+        <br />
 
-            <label>Name on Card:</label>
-            <input type="text" id="card" placeholder="Mr.John Deo" />
-            <label>Credit Card Number:</label>
-            <input type="number" id="cardNo." placeholder="1111-2222-3333-4444" />
-            <label>Exp Month:</label>
-            <input type="text" id="month" placeholder="January" />
-            <div id="stateInfo">
-                <label>Exp Year:</label>
-                <label>CVV:</label>
-            </div>
-            <div id="idk" style="display: flex;">
-                <input type="number" id="state" placeholder="2022" />
-                <input type="number" id="zip" placeholder="1234" />
-            </div>
+        <label>Name on Card:</label>
+        <input type="text" id="card" placeholder="Mr.John Deo" />
+        <label>Credit Card Number:</label>
+        <input type="number" id="cardNo." placeholder="1111-2222-3333-4444" />
+        <label>Exp Month:</label>
+        <input type="text" id="month" placeholder="January" />
+        <div id="stateInfo">
+          <label>Exp Year:</label>
+          <label>CVV:</label>
         </div>
+        <div id="idk" style="display: flex">
+          <input type="number" id="state" placeholder="2022" />
+          <input type="number" id="zip" placeholder="1234" />
+        </div>
+      </div>
     </div>
 
     <div class="popup" id="popup-1">
-        <div class="overlay"></div>
-        <div class="content">
-            <div class="close-btn" onclick="togglePopup()">&times;</div>
-            <!-- <h2>Your Order Placed Successfully</h2>
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
+        <!-- <h2>Your Order Placed Successfully</h2>
             <p>Thank You</p> -->
-        </div>
+      </div>
     </div>
-
 
     <button id="order" onclick="togglePopup()">Conform Order</button>
 
     <footer id="foot"></footer>
-
-</body>
-
+  </body>
 </html>
 
 <script type="module">
+  import header from "../components/header.js";
+  let top = document.getElementById("bar");
+  top.innerHTML = header();
 
-    import header from "../components/header.js";
-    let top = document.getElementById("bar");
-    top.innerHTML = header();
+  import footer from "../components/footer.js";
+  let base = document.getElementById("foot");
+  base.innerHTML = footer();
 
-    import footer from "../components/footer.js";
-    let base = document.getElementById("foot");
-    base.innerHTML = footer();
-
-
+  // document.getElementById("popup-1").innerHTML = "";
+  function togglePopup() {
+    document.getElementById("popup-1").classList.toggle("active");
     // document.getElementById("popup-1").innerHTML = "";
-    function togglePopup() {
-        document.getElementById("popup-1").classList.toggle("active");
-        // document.getElementById("popup-1").innerHTML = "";
-        appendName();
-    }
+    appendName();
+  }
 
-
-    function appendName() {
-        let name = document.getElementById("name").value;
-        console.log('name:', name);
-        let div = document.createElement("div");
-        let user = document.createElement("h3");
-        user.innerHTML = `${name}, Your Order is Placed Successfully`;
-        let end = document.createElement("p");
-        end.innerHTML = "Thank You!";
-        end.style.marginBottom = "0px"
-        let img = document.createElement("img");
-        img.src = "https://c.tenor.com/Hw7f-4l0zgEAAAAC/check-green.gif"
-        img.style.width = "20%"
-        img.style.height = "25%"
-        div.append(user, end, img);
-        document.querySelector(".content").append(div);
-
-    }
+  function appendName() {
+    let name = document.getElementById("name").value;
+    console.log("name:", name);
+    let div = document.createElement("div");
+    let user = document.createElement("h3");
+    user.innerHTML = `${name}, Your Order is Placed Successfully`;
+    let end = document.createElement("p");
+    end.innerHTML = "Thank You!";
+    end.style.marginBottom = "0px";
+    let img = document.createElement("img");
+    img.src = "https://c.tenor.com/Hw7f-4l0zgEAAAAC/check-green.gif";
+    img.style.width = "20%";
+    img.style.height = "25%";
+    div.append(user, end, img);
+    document.querySelector(".content").append(div);
+  }
 </script>

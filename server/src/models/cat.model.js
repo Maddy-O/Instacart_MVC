@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
-const optionSchema = new mongoose.Schema({
-    name: {type:String, required: true}
-},
-{
+const optionSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+  },
+  {
     versionKey: false,
-    timestamps: true
-});
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("option", optionSchema);
