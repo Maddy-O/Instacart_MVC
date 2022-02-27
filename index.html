@@ -19,7 +19,8 @@
             <div class="country">
                 <div class="choose_country">
                     <!-- <object data="https://www.instacart.com/assets/growth/landing/locations_page/us_flag-ba87db09d555f6ca56f88b49567659e9fcd51d5083d312e1040464ab996900c1.svg" type="image/svg+xml"></object> -->
-                    <img src="https://www.instacart.com/assets/growth/landing/locations_page/us_flag-ba87db09d555f6ca56f88b49567659e9fcd51d5083d312e1040464ab996900c1.svg" alt="American-flag">
+                    <img src="https://www.instacart.com/assets/growth/landing/locations_page/us_flag-ba87db09d555f6ca56f88b49567659e9fcd51d5083d312e1040464ab996900c1.svg"
+                        alt="American-flag">
                     <select name="country" id="select_country">
                         <option value="US">US</option>
                         <option value="CA">CA</option>
@@ -37,7 +38,8 @@
                                 <input type="text" id="address_input" placeholder="Enter your address">
                                 <span>Enter your address first</span>
                             </div>
-                            <img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/000000/external-forward-arrow-button-email-color-tal-revivo.png" id="address_input_img" style="cursor: pointer;"/>
+                            <img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/000000/external-forward-arrow-button-email-color-tal-revivo.png"
+                                id="address_input_img" style="cursor: pointer;" />
                         </div>
                     </div>
                 </div>
@@ -241,22 +243,26 @@
                                 <h3>Choose what you want</h3>
                                 <p>Select items from your favorite grocery stores at Instacart.com or in the app.</p>
                             </div>
-                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/how_it_works-163dcc1c8f91c63d7b0bdb648b5370a89267d54c8cb90bd858495395b8a9e5f3.jpg" alt="">
+                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/how_it_works-163dcc1c8f91c63d7b0bdb648b5370a89267d54c8cb90bd858495395b8a9e5f3.jpg"
+                                alt="">
                         </div>
                         <div class="third_content_item_1">
                             <div>
                                 <h3>See real-time updates</h3>
                                 <p>Personal shoppers pick items with care. Chat as they shop and manage your order.</p>
                             </div>
-                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/real_time_updates-8330ec94f4d8006c6732bb2f65141e3596dcd3be02b0bf0376dcf5e2895fe37e.jpg" alt="">
+                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/real_time_updates-8330ec94f4d8006c6732bb2f65141e3596dcd3be02b0bf0376dcf5e2895fe37e.jpg"
+                                alt="">
                         </div>
                         <div class="third_content_item_1">
                             <div>
                                 <h3>Get your items same-day</h3>
-                                <p>Pick a convenient time for you. Enjoy Instacart’s 100% quality guarantee on every order.
+                                <p>Pick a convenient time for you. Enjoy Instacart’s 100% quality guarantee on every
+                                    order.
                                 </p>
                             </div>
-                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/same_day_delivery-a00a9a59cbdfc41e7449cbdd04c12d27303284bef1a8fe957ec2a0112a70d7e7.jpg" alt="">
+                            <img src="https://www.instacart.com/image-server/347x214/filters:fill(FFF,true):format(webp)/www.instacart.com/assets/homepage/same_day_delivery-a00a9a59cbdfc41e7449cbdd04c12d27303284bef1a8fe957ec2a0112a70d7e7.jpg"
+                                alt="">
                         </div>
                     </div>
                     <button>
@@ -372,31 +378,34 @@
 </html>
 <script type="module">
 
-    import header from "./components/header.js"; let top = document.getElementById("bar");
-    top.innerHTML=header(); import footer from "./components/footer.js";
+    import header from "./components/header.js";
+    let top = document.getElementById("bar");
+    top.innerHTML = header();
+
+    import footer from "./components/footer.js";
     let base = document.getElementById("foot");
-    base.innerHTML=footer();
+    base.innerHTML = footer();
 
 
-    document.getElementById("address_input_img").addEventListener("click",click);
+    document.getElementById("address_input_img").addEventListener("click", click);
 
-    function click(event){
+    function click(event) {
         // event.preventDefault();
         let add = document.getElementById("address_input").value;
         console.log(add);
     }
 
-    document.querySelector(".login_btn").addEventListener("click",tab);
-    function tab(event){
+    document.querySelector(".login_btn").addEventListener("click", tab);
+    function tab(event) {
         // event.preventDefault();
-        window.location.href="login.html";
+        window.location.href = "login.html";
         // console.log("lala")
     }
 
-    document.querySelector(".signup_btn").addEventListener("click",tap);
-    function tap(event){
+    document.querySelector(".signup_btn").addEventListener("click", tap);
+    function tap(event) {
         // event.preventDefault();
-        window.location.href="register.html";
+        window.location.href = "register.html";
         // console.log("lala")
     }
 
