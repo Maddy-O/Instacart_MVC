@@ -67,12 +67,13 @@ services via a website and mobile app.
 
 
 ## Walkthrough
-
-- The first page is the index.html page where the basic info about instacart can be displayed, including header and footer.
-- In the header component of the index.html iteself we are having sign up and login functionalities.
-- The second page is the landing page which will be displayed once the user logs in.
-- On clicking on any of the category on landing page we route to the products page where products are filtered according to the category selected.
-- From the products page itself. Items can be added into the cart as shown in the screenshot.
-- On clicking the green coloured cart button on the navbar of the products page we can route to the checkout page where on entering the required details one can place the orer as illustrated in the screenshot. 
+- The first page is the landing page of the project where basic information about the website and login/register functionalities can be accessed.
+- Then we come down to login and register where if the user successfully completes the registration process,is directed to the login page.
+- After login the user is redirected to the products page where different catefories of products can be found.
+- On clicking on any of the category on the products page we route to the add to cart page where products are filtered according to the category selected.
+- In the add to cart page, user can also filter according to the subcategory. For every category we have sub-categories i.e. there's a one-to-many relationship between category and subcategory.
+- On clicking the green coloured cart button on the navbar we can have a look at what all items are there in the cart and also remove them. 
+- Once the user is sure about the products in the cart they can click the Go to checkout button, where they will be routed to the checkout page.
+- After entering the required details. The order will be placed.
 
 
