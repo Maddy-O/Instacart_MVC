@@ -54,7 +54,11 @@ services via a website and mobile app.
 
 ![image](https://user-images.githubusercontent.com/44356948/150652538-55acaaa9-4876-44b5-b486-86d7ca3aa186.png)
 
-![image](https://user-images.githubusercontent.com/44356948/150652561-ae743270-a64f-42fa-a5dc-6270d55beb3e.png)
+![image](https://user-images.githubusercontent.com/44356948/156133512-9dc655cd-f4c0-44d9-a63b-2fe90edb1edf.png)
+
+![image](https://user-images.githubusercontent.com/44356948/156133618-0f22b608-fccb-4faf-9ea9-3878288dde21.png)
+
+![image](https://user-images.githubusercontent.com/44356948/156133563-d1710593-ddce-49be-8408-fa880545b54e.png)
 
 ![image](https://user-images.githubusercontent.com/44356948/150652644-f403fdc4-c275-481e-936a-3486427623fe.png)
 
