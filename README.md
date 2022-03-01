@@ -46,9 +46,9 @@ services via a website and mobile app.
 
 ![Screenshot (193)](https://user-images.githubusercontent.com/44356948/156133293-2ec7632d-158f-4d2e-bcb2-6132ca2cf00b.png)
 
-![image](https://user-images.githubusercontent.com/44356948/150669067-3a65cabb-abb2-4c8e-b487-fa0ab7e1bbd1.png)
-
 ![image](https://user-images.githubusercontent.com/44356948/150652494-c7784e6b-77ca-4f5b-ab40-dab25b5f2b25.png)
+
+![image](https://user-images.githubusercontent.com/44356948/150669067-3a65cabb-abb2-4c8e-b487-fa0ab7e1bbd1.png)
 
 ![image](https://user-images.githubusercontent.com/44356948/150652519-48f7b3c9-7d62-4f7a-9e3f-2815c62771c8.png)
 
@@ -56,9 +56,9 @@ services via a website and mobile app.
 
 ![image](https://user-images.githubusercontent.com/44356948/156133512-9dc655cd-f4c0-44d9-a63b-2fe90edb1edf.png)
 
-![image](https://user-images.githubusercontent.com/44356948/156133618-0f22b608-fccb-4faf-9ea9-3878288dde21.png)
-
 ![image](https://user-images.githubusercontent.com/44356948/156133563-d1710593-ddce-49be-8408-fa880545b54e.png)
+
+![image](https://user-images.githubusercontent.com/44356948/156133618-0f22b608-fccb-4faf-9ea9-3878288dde21.png)
 
 ![image](https://user-images.githubusercontent.com/44356948/150652644-f403fdc4-c275-481e-936a-3486427623fe.png)
 
