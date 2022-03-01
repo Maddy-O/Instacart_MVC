@@ -23,9 +23,6 @@ services via a website and mobile app.
   GET /api/${category}
 ```
 
-
-
-
 ## Tech Stack
 
 **Client:** JavaScript,HTML and CSS.
@@ -44,6 +41,10 @@ services via a website and mobile app.
 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/44356948/150669043-fb6c095f-2c03-497d-bca0-92327a5c58ad.png)
+
+![Screenshot (192)](https://user-images.githubusercontent.com/44356948/156133043-7b02161d-bc34-4701-952a-242b7f50a950.png)
+
+![Screenshot (193)](https://user-images.githubusercontent.com/44356948/156133293-2ec7632d-158f-4d2e-bcb2-6132ca2cf00b.png)
 
 ![image](https://user-images.githubusercontent.com/44356948/150669067-3a65cabb-abb2-4c8e-b487-fa0ab7e1bbd1.png)
 
