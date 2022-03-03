@@ -164,7 +164,7 @@
     document.querySelector(".heading").style.backgroundImage = `url(${display_obj['poster']})`;
 
     // Working and displaying subcategories.
-    let subCategory_url = `http://localhost:5000/subCategory/${display_obj['id']}`
+    let subCategory_url = `https://instacart-backend.herokuapp.com/subCategory/${display_obj['id']}`
     let subcategories;
 
     getData(subCategory_url).then((res)=>{
@@ -179,7 +179,7 @@
      // Making the api call.
      let cat_id = display_obj['id'];
      let products_div = document.querySelector(".display_product");
-     let api_url = `http://localhost:5000/product/${display_obj['id']}`;
+     let api_url = `https://instacart-backend.herokuapp.com/product/${display_obj['id']}`;
      getData(api_url).then((res)=>{
          appendProducts(res,products_div,dropdown)
      })
@@ -192,10 +192,10 @@
             span.addEventListener("click",()=>{
                 products_div.innerHTML = "";
                 if(element['name']!="popular"){
-                    api_url = `http://localhost:5000/product/${display_obj['id']}?sub_category=${element['_id']}`;
+                    api_url = `https://instacart-backend.herokuapp.com/product/${display_obj['id']}?sub_category=${element['_id']}`;
                 }
                 else{
-                    api_url = `http://localhost:5000/product/${display_obj['id']}`
+                    api_url = `https://instacart-backend.herokuapp.com/product/${display_obj['id']}`
                 }
                 getData(api_url).then((res)=>{
                     appendProducts(res,products_div,dropdown)

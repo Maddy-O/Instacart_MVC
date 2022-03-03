@@ -22,7 +22,7 @@
 </body>
 </html>
 <script type="text/javascript">
-    let logged_in = JSON.parse(localStorage.getItem("logged_in"));
+    let logged_in = JSON.parse(localStorage.getItem("logged_in")) || {};
     async function login(){
         try{
             let data = {
@@ -30,8 +30,7 @@
                 "password":document.querySelector("#password").value
             }
             data = JSON.stringify(data);
-            console.log(data)
-            let response = await fetch("http://localhost:5000/login",{
+            let response = await fetch("https://instacart-backend.herokuapp.com/login",{
             method:'POST',
             body:data,
             headers:{
@@ -40,6 +39,7 @@
             }
         });
         let res = await response.json();
+        localStorage.setItem("logged_in",JSON.stringify(res))
         window.location.href = "landing_page.html"
         }
         catch(err){

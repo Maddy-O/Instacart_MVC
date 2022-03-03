@@ -97,14 +97,14 @@
     });
 
     let categories;
-    let categories_url = "http://localhost:5000/category";
+    let categories_url = "https://instacart-backend.herokuapp.com/category";
     getData(categories_url).then((res)=>{
         categories = res;    
     })
     
     setTimeout(() => {
             appendCats(categories)
-    }, 500);
+    }, 1000);
     
 
     let categories_div = document.querySelector(".categories");
