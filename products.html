@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="header_container">
-        
+
     </div>
     <div class="products">
         <div class="heading">
@@ -21,7 +23,7 @@
 
         </div>
         <div class="display_product">
-            
+
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -30,10 +32,10 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="display_content">
-            </div>    
+            </div>
             <h3>Recommendations</h3>
             <div class="recommended">
-                
+
             </div>
         </div>
     </div>
@@ -123,9 +125,9 @@
                 <span>Log out</span>
             </div>
         </div>
-      </div>
-      <div class="rightnav">
-          <div class="rightnav_head">
+    </div>
+    <div class="rightnav">
+        <div class="rightnav_head">
             <div>
                 <p>Items added into Cart</p>
                 <p>Shpping in 04038</p>
@@ -133,33 +135,34 @@
             <p>
                 <button id="close_button">X Close</i></button>
             </p>
-          </div>
-          <div class="cart_items">
+        </div>
+        <div class="cart_items">
 
-          </div>
-          <div class="checkout_btn">
+        </div>
+        <div class="checkout_btn">
             <div>
                 <span>Go to checkout</span>
                 <span id="amount">0</span>
             </div>
         </div>
-      </div>
+    </div>
 </body>
+
 </html>
 
 
 <script type="module">
-    import {getData,appendProducts,appendData,displayCart} from "./scripts/main.js";
+    import { getData, appendProducts, appendData, displayCart } from "./scripts/main.js";
     // import navBar from "./components/navbar_products.js";
 
     let dropdown = document.querySelector("#qty");
     dropdown.style.display = "none"
-    
+
 
     import navBar from "./components/navbar_products.js";
 
     // Changing the title and the bg according to selected category.
-    let display_obj = JSON.parse(localStorage.getItem("cat_obj"))||{};
+    let display_obj = JSON.parse(localStorage.getItem("cat_obj")) || {};
     document.querySelector("#cat_span").textContent = display_obj['name'];
     document.querySelector(".heading").style.backgroundImage = `url(${display_obj['poster']})`;
 
@@ -167,14 +170,14 @@
     let subCategory_url = `https://instacart-backend.herokuapp.com/subCategory/${display_obj['id']}`
     let subcategories;
 
-    getData(subCategory_url).then((res)=>{
+    getData(subCategory_url).then((res) => {
         subcategories = res;
     })
 
     setTimeout(() => {
-        subcategories.unshift({name:"popular"})
+        subcategories.unshift({ name: "popular" })
         displaySubs(subcategories)
-    }, 500);
+    }, 1000);
 
      // Making the api call.
      let cat_id = display_obj['id'];
@@ -189,7 +192,7 @@
         subcategories.forEach(element => {
             let span = document.createElement("span");
             span.textContent = element['name'];
-            span.addEventListener("click",()=>{
+            span.addEventListener("click", () => {
                 products_div.innerHTML = "";
                 if(element['name']!="popular"){
                     api_url = `https://instacart-backend.herokuapp.com/product/${display_obj['id']}?sub_category=${element['_id']}`;
@@ -197,8 +200,8 @@
                 else{
                     api_url = `https://instacart-backend.herokuapp.com/product/${display_obj['id']}`
                 }
-                getData(api_url).then((res)=>{
-                    appendProducts(res,products_div,dropdown)
+                getData(api_url).then((res) => {
+                    appendProducts(res, products_div, dropdown)
                 })
             })
             main_div.append(span)
@@ -213,89 +216,88 @@
     let debounce = document.querySelector(".debouncing");
     debounce.style.display = "none"
 
-    document.querySelector("#searchBar").addEventListener("keypress",(event)=>{
+    document.querySelector("#searchBar").addEventListener("keypress", (event) => {
         debounce.style.display = "block";
         let search_term = document.querySelector("#searchBar").value;
         let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search_term}`
-        getData(url).then((res)=>{
-            if(res.meals == null || search_term == null)
-            {
+        getData(url).then((res) => {
+            if (res.meals == null || search_term == null) {
                 debounce.style.display = "none"
                 return
             }
-            appendData(res.meals,debounce)
+            appendData(res.meals, debounce)
         })
     });
 
     // Drodown functionality.
-    dropdown.addEventListener("change",()=>{
-        localStorage.setItem("qty",JSON.stringify(dropdown.value))
+    dropdown.addEventListener("change", () => {
+        localStorage.setItem("qty", JSON.stringify(dropdown.value))
     })
-
-
-    // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// Routing to the checkout page.
-document.querySelector("#cart").addEventListener("click",()=>{
-    if(cart_items.length == 0){
-        return
-    }
-})
-
-
-document.querySelector("#menu").addEventListener("click",()=>{
-    document.getElementById("mySidenav").style.width = "300px";
-})
-
-// When the user clicks anywhere outside of the navbar, close it
-window.onclick = function(event) {
-  if (event.target != document.getElementById("menu")) {
-    document.getElementById("mySidenav").style.width = "0px"
-  }
-}
 
 
     // Get the modal
     var modal = document.getElementById("myModal");
 
-// opening the right nav menu.
-document.querySelector("#cart").addEventListener("click",()=>{
-    document.querySelector(".rightnav").style.width = "500px"
-})
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-// closing the right nav menu.
-document.querySelector("#close_button").addEventListener("click",()=>{
-    document.querySelector(".rightnav").style.width="0px";
-})
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// displaying the cart items into the right nav bar.
-let cart_items = JSON.parse(localStorage.getItem("cart_items"))||[];
-displayCart(cart_items);
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
 
-// routing to checkout page.
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
-let logged_in = JSON.parse(localStorage.getItem("logged_in"));
-console.log(logged_in)
-document.querySelector(".checkout_btn").addEventListener("click",()=>{
-    window.location.href = "./checkout/checkout.html"
-})
+    // Routing to the checkout page.
+    document.querySelector("#cart").addEventListener("click", () => {
+        if (cart_items.length == 0) {
+            return
+        }
+    })
+
+
+    document.querySelector("#menu").addEventListener("click", () => {
+        document.getElementById("mySidenav").style.width = "300px";
+    })
+
+    // When the user clicks anywhere outside of the navbar, close it
+    window.onclick = function (event) {
+        if (event.target != document.getElementById("menu")) {
+            document.getElementById("mySidenav").style.width = "0px"
+        }
+    }
+
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // opening the right nav menu.
+    document.querySelector("#cart").addEventListener("click", () => {
+        document.querySelector(".rightnav").style.width = "500px"
+    })
+
+    // closing the right nav menu.
+    document.querySelector("#close_button").addEventListener("click", () => {
+        document.querySelector(".rightnav").style.width = "0px";
+    })
+
+    // displaying the cart items into the right nav bar.
+    let cart_items = JSON.parse(localStorage.getItem("cart_items")) || [];
+    displayCart(cart_items);
+
+    // routing to checkout page.
+
+    let logged_in = JSON.parse(localStorage.getItem("logged_in"));
+    console.log(logged_in)
+    document.querySelector(".checkout_btn").addEventListener("click", () => {
+        window.location.href = "./checkout/checkout.html"
+    })
 </script>

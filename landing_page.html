@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./styles/navbar.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="header_container">
     </div>
@@ -40,59 +42,59 @@
     <h2>Pet supplies in San Francisco</h2>
     <div id="slot12"></div>
 </body>
+
 </html>
 
 <script type="module">
-    import {returnCatgories} from "./scripts/data.js";
-    import {getData,appendData} from "./scripts/main.js";
+    import { returnCatgories } from "./scripts/data.js";
+    import { getData, appendData } from "./scripts/main.js";
     import navBar from "./components/navbar.js";
 
     // Appending the navbar to html.
     let container = document.querySelector(".header_container");
     container.innerHTML = navBar()
-    
+
 
     var menuIcon = document.querySelector(".menu-icon");
     var sidebar = document.querySelector(".sidebar_left");
-    var cart = document.querySelector("#cart_btn") ;
-    var right_sidebar = document.querySelector(".sidebar_right") ;
-    var left_close = document.querySelector(".closeBtn") ;
-    var right_close = document.querySelector(".right_closeBtn") ;
+    var cart = document.querySelector("#cart_btn");
+    var right_sidebar = document.querySelector(".sidebar_right");
+    var left_close = document.querySelector(".closeBtn");
+    var right_close = document.querySelector(".right_closeBtn");
 
-    sidebar.style.display = "none" ;
-    right_sidebar.style.display = "none" ;
+    sidebar.style.display = "none";
+    right_sidebar.style.display = "none";
 
-    menuIcon.addEventListener("click" , function(){
-        sidebar.style.display = "block" ;
+    menuIcon.addEventListener("click", function () {
+        sidebar.style.display = "block";
     })
-    left_close.addEventListener("click" , function(){
-        sidebar.style.display = "none" ;
+    left_close.addEventListener("click", function () {
+        sidebar.style.display = "none";
     })
-    cart.addEventListener("click" , function(){
-        right_sidebar.style.display = "block" ;
+    cart.addEventListener("click", function () {
+        right_sidebar.style.display = "block";
     })
-    right_close.addEventListener("click" , function(){
-        right_sidebar.style.display = "none" ;
-        right_sidebar.style.height = "100%" ;
+    right_close.addEventListener("click", function () {
+        right_sidebar.style.display = "none";
+        right_sidebar.style.height = "100%";
     })
 
 
-    
+
     // debouncing functionality.
     let debounce = document.querySelector(".debouncing");
     debounce.style.display = "none"
-    
-    document.querySelector("#searchBar").addEventListener("keypress",(event)=>{
+
+    document.querySelector("#searchBar").addEventListener("keypress", (event) => {
         debounce.style.display = "block";
         let search_term = document.querySelector("#searchBar").value;
         let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search_term}`
-        getData(url).then((res)=>{
-            if(res.meals == null)
-            {
+        getData(url).then((res) => {
+            if (res.meals == null) {
                 debounce.style.display = "none"
                 return
             }
-            appendData(res.meals,debounce)
+            appendData(res.meals, debounce)
         })
     });
 
@@ -101,94 +103,94 @@
     getData(categories_url).then((res)=>{
         categories = res;    
     })
-    
+
     setTimeout(() => {
             appendCats(categories)
     }, 1000);
     
 
     let categories_div = document.querySelector(".categories");
-    
-    function appendCats(categories){
+
+    function appendCats(categories) {
         categories.forEach(elem => {
             let div = document.createElement("div");
             let img = document.createElement("img");
             img.src = elem['img'];
             let p1 = document.createElement("p");
             p1.textContent = elem['name'];
-            div.append(img,p1);
-            div.addEventListener("click",()=>{
+            div.append(img, p1);
+            div.addEventListener("click", () => {
                 let obj = {
-                    "name":elem['name'],
-                    "poster":elem['poster'],
-                    "id":elem['_id']
+                    "name": elem['name'],
+                    "poster": elem['poster'],
+                    "id": elem['_id']
                 }
-                localStorage.setItem("cat_obj",JSON.stringify(obj))
+                localStorage.setItem("cat_obj", JSON.stringify(obj))
                 window.location.href = "products.html"
             })
             categories_div.append(div);
         });
     }
 
-    let data = JSON.parse(localStorage.getItem("cart_items"))||[] ;
-    let length = data.length ;
-    document.getElementById("orderItam").innerText = length ;
+    let data = JSON.parse(localStorage.getItem("cart_items")) || [];
+    let length = data.length;
+    document.getElementById("orderItam").innerText = length;
 
-    displaycart(data) ;
-    function displaycart(data){
-        document.querySelector(".second_div").textContent = "" ;
-        data.map(function(el , id){  
-            var mdiv  = document.createElement("div") ;
-            mdiv.setAttribute("id" , "mdiv") ;
+    displaycart(data);
+    function displaycart(data) {
+        document.querySelector(".second_div").textContent = "";
+        data.map(function (el, id) {
+            var mdiv = document.createElement("div");
+            mdiv.setAttribute("id", "mdiv");
 
-            var div = document.createElement("div") ;
-            div.setAttribute("id" , "cartDiv" ) ;
+            var div = document.createElement("div");
+            div.setAttribute("id", "cartDiv");
 
-            var img = document.createElement("img") ;
-            img.src = el.img ;
-            img.setAttribute("id" , "cartImg" ) ;
-            
-            var name = document.createElement("p") ;
-            name.textContent = el.name ;
-            name.setAttribute("id" , "cartName" ) ;
+            var img = document.createElement("img");
+            img.src = el.img;
+            img.setAttribute("id", "cartImg");
 
-            var price = document.createElement("p") ;
-            price.innerHTML = "₹" + el.price ;
-            price.setAttribute("id" , "cartPrice" ) ;
+            var name = document.createElement("p");
+            name.textContent = el.name;
+            name.setAttribute("id", "cartName");
 
-            var remove = document.createElement("button") ;
-            remove.innerText = "Remove" ;
-            remove.setAttribute("id" , "remItem");
-            remove.addEventListener("click" , function(){
-                deleteItem(el.price ,id) ;
+            var price = document.createElement("p");
+            price.innerHTML = "₹" + el.price;
+            price.setAttribute("id", "cartPrice");
+
+            var remove = document.createElement("button");
+            remove.innerText = "Remove";
+            remove.setAttribute("id", "remItem");
+            remove.addEventListener("click", function () {
+                deleteItem(el.price, id);
             })
 
 
-            div.append(img,name,price) ;
-            mdiv.append(div,remove) ;
-            document.querySelector(".second_div").append(mdiv) ;
+            div.append(img, name, price);
+            mdiv.append(div, remove);
+            document.querySelector(".second_div").append(mdiv);
         });
     }
-    
-    var count = 0 ;
-    for(let i=0 ; i<data.length ; i++){
-        var value = data[i].price ;
-            count += value ;
-    }
-    document.querySelector(".total").textContent = "₹" + count ;
-    document.querySelector(".total_chartBox").textContent = "₹" + count ;
 
-    function deleteItem(price , id){
-        event.target.parentNode.remove() ;
-        data.splice(id,1) ;
-        count -= price ;
-        document.querySelector(".total").textContent = "₹" + count ;
-        document.querySelector(".total_chartBox").textContent = "₹" + count ;
-        localStorage.setItem("cart_items" , JSON.stringify(data));
-        displaycart(data) ;
+    var count = 0;
+    for (let i = 0; i < data.length; i++) {
+        var value = data[i].price;
+        count += value;
+    }
+    document.querySelector(".total").textContent = "₹" + count;
+    document.querySelector(".total_chartBox").textContent = "₹" + count;
+
+    function deleteItem(price, id) {
+        event.target.parentNode.remove();
+        data.splice(id, 1);
+        count -= price;
+        document.querySelector(".total").textContent = "₹" + count;
+        document.querySelector(".total_chartBox").textContent = "₹" + count;
+        localStorage.setItem("cart_items", JSON.stringify(data));
+        displaycart(data);
     }
 
-//Dhruv's work
+    //Dhruv's work
     var i1 = "https://foodtechconnect.com/foodtechconnect/wp-content/uploads/2015/01/Newsletter-Monetization-Banner_lunch_forweb.jpg"
     var i2 = "https://oyelabs.com/wp-content/uploads/2020/07/instacart-paid-membership-options.png"
     var i3 = "https://cdn.zouton.com/images/originals/blog/banner1_1594900621.png"
@@ -197,10 +199,10 @@
     var img = document.createElement("img");
     img.style.width = "100%";
     img.style.height = "100%";
-    let i = 0; 
-    setInterval(function(){
+    let i = 0;
+    setInterval(function () {
         document.getElementById("slide").innerHTML = "";
-        if(i === imgArr.length){
+        if (i === imgArr.length) {
             i = 0;
         }
         img.setAttribute("src", imgArr[i]);
@@ -208,7 +210,7 @@
         i++;
     }, 3000);
 
-    function obj(logo, name, delivery){
+    function obj(logo, name, delivery) {
         this.logo = logo;
         this.name = name;
         this.delivery = delivery;
@@ -229,7 +231,7 @@
     var logo13 = new obj("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1781/3a7980ab-7c07-49c0-9627-a60ab57f5bd9.jpeg", "Sunbasket", "Delivery available");
 
     var logo_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13];
-    logo_arr.map(function(elem){
+    logo_arr.map(function (elem) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -248,22 +250,22 @@
 
     });
 
-    function obj1(poster, name, delivery){
+    function obj1(poster, name, delivery) {
         this.poster = poster;
         this.name = name;
         this.delivery = delivery;
-    }    
+    }
 
-    var poster1 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1390/579cb2af-b731-4cec-826d-bc1c1ecbf335.png","7-Eleven","Delivery by 4:15am");
-    var poster2 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1425/841f212e-4938-4245-9a31-62f61dd99d6b.jpg","Dollar Tree","Delivery by 10:50pm");
-    var poster3 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1723/519586f9-471d-4bee-892e-72b99945ebaa.png","The Container Store","Delivery by 2:55pm");
-    var poster4 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1764/57f01051-e619-4cfa-ad82-f07479637f11.jpg","The Body Shop","Delivery by 10:40pm");
-    var poster5 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1871/1d8899ef-d619-4f2f-95de-0c94877917fa.png","Grocery Outlet","Delivery by 2:00pm");
-    var poster6 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1831/cd67e0ba-6568-422e-901c-c943d898ff36.png","FoodsCo Delivery Now","Delivery by 10:45pm");
+    var poster1 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1390/579cb2af-b731-4cec-826d-bc1c1ecbf335.png", "7-Eleven", "Delivery by 4:15am");
+    var poster2 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1425/841f212e-4938-4245-9a31-62f61dd99d6b.jpg", "Dollar Tree", "Delivery by 10:50pm");
+    var poster3 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1723/519586f9-471d-4bee-892e-72b99945ebaa.png", "The Container Store", "Delivery by 2:55pm");
+    var poster4 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1764/57f01051-e619-4cfa-ad82-f07479637f11.jpg", "The Body Shop", "Delivery by 10:40pm");
+    var poster5 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1871/1d8899ef-d619-4f2f-95de-0c94877917fa.png", "Grocery Outlet", "Delivery by 2:00pm");
+    var poster6 = new obj1("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/1831/cd67e0ba-6568-422e-901c-c943d898ff36.png", "FoodsCo Delivery Now", "Delivery by 10:45pm");
 
     var poster_arr = [poster1, poster2, poster3, poster4, poster5, poster6];
 
-    poster_arr.map(function(e){
+    poster_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -281,7 +283,7 @@
         document.querySelector("#slot2").append(main)
     });
 
-    function obj2(p, name, delivery){
+    function obj2(p, name, delivery) {
         this.poster = p;
         this.name = name;
         this.delivery = delivery;
@@ -293,7 +295,7 @@
     var place_arr = [place1, place2];
 
 
-    place_arr.map(function(e){
+    place_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -311,7 +313,7 @@
         document.querySelector("#slot3").append(main);
     });
 
-    function obj3(l, name, delivery){
+    function obj3(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -323,7 +325,7 @@
 
     var slot_arr = [logo1, logo2, logo3];
 
-    slot_arr.map(function(e){
+    slot_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -341,7 +343,7 @@
         document.querySelector("#slot4").append(main);
     });
 
-    function obj4(l, name, delivery){
+    function obj4(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -360,7 +362,7 @@
 
     var fav_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10];
 
-    fav_arr.map(function(e){
+    fav_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -378,7 +380,7 @@
         document.querySelector("#slot5").append(main);
     });
 
-    function obj5(l, name, delivery){
+    function obj5(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -400,7 +402,7 @@
 
     var fav2_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13];
 
-    fav2_arr.map(function(e){
+    fav2_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -418,7 +420,7 @@
         document.querySelector("#slot6").append(main);
     });
 
-    function obj6(l, name, delivery){
+    function obj6(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -429,7 +431,7 @@
 
     var fav3_arr = [logo1, logo2];
 
-    fav3_arr.map(function(e){
+    fav3_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -447,7 +449,7 @@
         document.querySelector("#slot7").append(main);
     });
 
-    function obj7(l, name, delivery){
+    function obj7(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -477,7 +479,7 @@
 
     var fav4_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21];
 
-    fav4_arr.map(function(e){
+    fav4_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -495,7 +497,7 @@
         document.querySelector("#slot8").append(main);
     });
 
-    function obj8(l, name, delivery){
+    function obj8(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -508,7 +510,7 @@
     var logo5 = new obj8("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/436/695aaa61-4dab-4965-a7e3-0c2f93e9b119.png", "New Leaf Markets", "Delivery by 5:35pm");
 
     var fav5_arr = [logo1, logo2, logo3, logo4, logo5];
-    fav5_arr.map(function(e){
+    fav5_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -526,7 +528,7 @@
         document.querySelector("#slot9").append(main);
     });
 
-    function obj9(l, name, delivery){
+    function obj9(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -544,7 +546,7 @@
 
     var fav6_arr = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9];
 
-    fav6_arr.map(function(e){
+    fav6_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -562,7 +564,7 @@
         document.querySelector("#slot10").append(main);
     });
 
-    function obj10(l, name, delivery){
+    function obj10(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -573,7 +575,7 @@
 
     var fav7_arr = [logo1, logo2];
 
-    fav7_arr.map(function(e){
+    fav7_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
@@ -590,8 +592,8 @@
         main.append(div, div2);
         document.querySelector("#slot11").append(main);
     });
-    
-    function obj11(l, name, delivery){
+
+    function obj11(l, name, delivery) {
         this.logo = l;
         this.name = name;
         this.delivery = delivery;
@@ -601,7 +603,7 @@
     var logo2 = new obj11("https://www.instacart.com/image-server/72x/www.instacart.com/assets/domains/warehouse/logo/208/41ede53f-f19a-49a4-ba67-dbe789b5e097.png", "Healthy Spot- Organic Pet Food", "Delivrey by 3:05pm");
     var fav8_arr = [logo1, logo2];
 
-    fav8_arr.map(function(e){
+    fav8_arr.map(function (e) {
         var main = document.createElement("div");
         var div = document.createElement("div");
         var div2 = document.createElement("div");
