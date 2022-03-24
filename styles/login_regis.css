@@ -8,6 +8,7 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: #fdfdfd;
 }
+
 #firstDiv {
   height: 300px;
   gap: 10px;
@@ -27,7 +28,7 @@
   font-weight: 600px;
   font-style: normal;
   color: white;
-  background-color: #0aad0a;
+  background-color: #0ea80e;
   border: transparent;
 }
 #button:hover {
